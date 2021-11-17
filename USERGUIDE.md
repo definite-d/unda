@@ -23,7 +23,7 @@ y = SomeClass('some string', 'some_other_string')
 ### Import Unda
 Next, import the module like so:
 ````python
-from unda.unda import UndaManager
+from unda import UndaManager
 ````
 The UndaManager is bascally the only interface you need for normal use.
 Next, you'll need to add objects to it.
