@@ -80,7 +80,7 @@ class SomeClass:
 x = SomeClass('a string', 'another_string')
 y = SomeClass('some string', 'some_other_string')
 
-from unda.unda import UndaManager
+from unda import UndaManager
 
 some_objects = {'object X': x, 'object Y': y}
 manager = UndaManager(some_objects)
