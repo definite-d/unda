@@ -22,14 +22,26 @@ class UndaObject:
         self.redo_stack: deque = redo_stack
 
     def clear_undo_stack(self) -> None:
+        """
+        Clears the undo stack for this object.
+        :return: None
+        """
         self.undo_stack.clear()
         return None
 
     def clear_redo_stack(self) -> None:
+        """
+        Clears the redo stack for this object.
+        :return: None
+        """
         self.redo_stack.clear()
         return None
 
     def clear_stacks(self) -> None:
+        """
+        Clears both the undo and redo stacks for this object.
+        :return: None
+        """
         self.clear_undo_stack()
         self.clear_redo_stack()
         return None
@@ -45,7 +57,8 @@ class UndaManager:
     """
     starter_objects: Optional[Dict] = None
 
-    def __init__(self, starter_objects: Optional[Dict] = None) -> None:
+    def __init__(self, starter_objects: Optional[Dict] = None, stack_height: int = STACK_HEIGHT) -> None:
+        self.stack_height: int = stack_height
         self.starter_objects: Optional[Dict] = starter_objects
         self.objects: Dict = {}
         if self.starter_objects is not None:
@@ -87,7 +100,7 @@ class UndaManager:
         :return: None
         """
         for key in self.objects.keys():
-            selfobjects[key].clear_stacks()
+            self.objects[key].clear_stacks()
 
     def clear_undo_stacks(self) -> None:
         """
@@ -117,9 +130,10 @@ class UndaManager:
         """
         # Clear all states above the required one.
         self.objects[key].undo_stack = deque(
-            list(self.objects[key].undo_stack)[0:len(self.objects[key].undo_stack) - depth + 1])
+            list(self.objects[key].undo_stack)[0:len(self.objects[key].undo_stack) - depth],
+            maxlen=self.stack_height)
         # Get the required state
-        response = self.objects[key].undo_stack.pop()
+        response = list(self.objects[key].undo_stack).pop()
         # Save the state before the undo call to the redo stack.
         self.objects[key].undo_stack.append(deepcopy(self.objects[key].target))
         return response
@@ -128,7 +142,8 @@ class UndaManager:
         """
         Same as undo, but applies to all objects in the UndaManager's care, and returns a dict in the format:
         {key: object}
-        :param depth: The index of the object to be retrieved, plus 1. By default, it's 1.
+        :param depth: The number of states to skip with a single undo call.
+                        By default, it's 1, and should work for most uses.
         :return: A dict in the format: {key: deepcopied object)
         """
         return {key: self.undo(key, depth) for key in self.objects.keys()}
@@ -139,12 +154,14 @@ class UndaManager:
         Returns (by default) the first object found in the redo deque.
         (i.e.: a deepcopy version of the object which was added prior to the current one).
         :param key: The key to the object.
-        :param depth: The index of the object to be retrieved, plus 1. By default, it's 1.
+        :param depth: The number of states to skip with a single redo call.
+                        By default, it's 1, and should work for most uses.
         :return: The deepcopied object. You can use this to replace the original object that needs to be redone.
         """
         # Clear all states above the required one.
         self.objects[key].undo_stack = deque(
-            list(self.objects[key].undo_stack)[0:len(self.objects[key].undo_stack) - depth + 1])
+            list(self.objects[key].undo_stack)[0:len(self.objects[key].undo_stack) - depth],
+            maxlen=self.stack_height)
         # Get the required state
         response = self.objects[key].undo_stack.pop()
         # Save the state before the undo call to the redo stack.
@@ -155,7 +172,8 @@ class UndaManager:
         """
         Same as redo, but applies to all objects in the UndaManager's care, and returns a dict in the format:
         {key: object}
-        :param depth: The index of the object to be retrieved, plus 1. By default, it's 1.
+        :param depth: The number of states to skip with a single redo call.
+                        By default, it's 1, and should work for most uses.
         :return: A dict in the format: {key: deepcopied object)
         """
         return {key: self.redo(key, depth) for key in self.objects.keys()}
