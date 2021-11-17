@@ -62,7 +62,7 @@ print(x.foo)
 Running that gives this result...:
 ````text
 The foo has changed!
-A string.
+a string
 The foo has changed!
 ````
 ...as expected.
