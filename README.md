@@ -1,4 +1,7 @@
 # Unda
+````python
+pip install unda
+````
 
 ## What's Unda?
 Unda is a Python 3 module which provides state-based undo and redo functionality for Python objects using a 
