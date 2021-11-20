@@ -2,6 +2,8 @@
 Unda Undo/Redo Algorithm Script
 Provides state-based functionality behind undo and redo of Python objects.
 """
+__version__ = '1.0.3.3'
+
 from collections import deque
 from copy import copy, deepcopy
 from typing import Dict, Optional
@@ -74,7 +76,7 @@ class UndaManager:
         :return: None
         """
         self.objects[key] = UndaObject(target)
-        
+
     def update(self, key) -> None:
         """
         Tells the Manager to add a deepcopied instance of an object to its deque using its key as reference.
@@ -130,12 +132,12 @@ class UndaManager:
         """
         # Clear all states above the required one.
         self.objects[key].undo_stack = deque(
-            list(self.objects[key].undo_stack)[0:len(self.objects[key].undo_stack) - depth],
+            list(self.objects[key].undo_stack)[0:len(self.objects[key].undo_stack) - depth + 1],
             maxlen=self.stack_height)
         # Get the required state
-        response = list(self.objects[key].undo_stack).pop()
+        response = self.objects[key].undo_stack.pop()
         # Save the state before the undo call to the redo stack.
-        self.objects[key].undo_stack.append(deepcopy(self.objects[key].target))
+        self.objects[key].redo_stack.append(deepcopy(self.objects[key].target))
         return response
 
     def undo_all(self, depth: int = 1) -> Dict:
@@ -159,12 +161,12 @@ class UndaManager:
         :return: The deepcopied object. You can use this to replace the original object that needs to be redone.
         """
         # Clear all states above the required one.
-        self.objects[key].undo_stack = deque(
-            list(self.objects[key].undo_stack)[0:len(self.objects[key].undo_stack) - depth],
+        self.objects[key].redo_stack = deque(
+            list(self.objects[key].redo_stack)[0:len(self.objects[key].redo_stack) - depth + 1],
             maxlen=self.stack_height)
         # Get the required state
-        response = self.objects[key].undo_stack.pop()
-        # Save the state before the undo call to the redo stack.
+        response = self.objects[key].redo_stack.pop()
+        # Save the state before the redo call to the undo stack.
         self.objects[key].undo_stack.append(deepcopy(self.objects[key].target))
         return response
 
