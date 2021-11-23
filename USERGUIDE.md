@@ -72,4 +72,4 @@ print(board.flipped)  # This will print False
 ``` 
 
 
-That's basically all you need to know to use Unda. You could 
+That's basically all you need to know to use Unda.
