@@ -1,9 +1,9 @@
 # Unda
-![Downloads](https://img.shields.io/pypi/dm/unda.svg?style=flat-square)
-![GitHub forks](https://img.shields.io/github/forks/definite-d/unda?logo=github&style=flat-square)
-![PyPi Version](https://img.shields.io/pypi/v/unda?style=flat-square)
-![Python Versions](https://img.shields.io/pypi/pyversions/unda.svg?style=flat-square&logo=python])
-![License](https://img.shields.io/pypi/l/unda.svg?style=flat-square&version=latest)
+![Downloads](https://img.shields.io/pypi/dm/unda.svg?style=flat)
+![GitHub forks](https://img.shields.io/github/forks/definite-d/unda?logo=github&style=flat)
+![PyPi Version](https://img.shields.io/pypi/v/unda?style=flat)
+![Python Versions](https://img.shields.io/pypi/pyversions/unda.svg?style=flat&logo=python])
+![License](https://img.shields.io/pypi/l/unda.svg?style=flat&version=latest)
 
 ````text
 pip install unda
