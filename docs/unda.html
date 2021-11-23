@@ -1,0 +1,2036 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>unda API documentation</title>
+<meta name="description" content="![Downloads](https://img.shields.io/pypi/dm/unda.svg?style=flat-square)
+![GitHub …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>unda</code></h1>
+</header>
+<section id="section-intro">
+<p><img alt="Downloads" src="https://img.shields.io/pypi/dm/unda.svg?style=flat-square">
+<img alt="GitHub forks" src="https://img.shields.io/github/forks/definite-d/unda?logo=github&amp;style=flat-square">
+<img alt="PyPi Version" src="https://img.shields.io/pypi/v/unda?style=flat-square">
+<img alt="Python Versions" src="https://img.shields.io/pypi/pyversions/unda.svg?style=flat-square&amp;logo=python]">
+<img alt="License" src="https://img.shields.io/pypi/l/unda.svg?style=flat-square&amp;version=latest"></p>
+<pre><code class="language-text">pip install unda
+</code></pre>
+<h1 id="introduction">Introduction</h1>
+<p>Welcome to Unda's Documentation!</p>
+<p>Contains technical details for the classes and functions. Not intended to be a <a href="https://github.com/definite-d/unda/blob/main/USERGUIDE.md">starter tutorial</a>.</p>
+<p>This documentation is auto-generated from Markdown-syntax docstrings using pdoc3, so please pardon the huge docstring at
+the beginning of the module's source code.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+![Downloads](https://img.shields.io/pypi/dm/unda.svg?style=flat-square)
+![GitHub forks](https://img.shields.io/github/forks/definite-d/unda?logo=github&amp;style=flat-square)
+![PyPi Version](https://img.shields.io/pypi/v/unda?style=flat-square)
+![Python Versions](https://img.shields.io/pypi/pyversions/unda.svg?style=flat-square&amp;logo=python])
+![License](https://img.shields.io/pypi/l/unda.svg?style=flat-square&amp;version=latest)
+
+````text
+pip install unda
+````
+
+# Introduction
+
+Welcome to Unda&#39;s Documentation!
+
+Contains technical details for the classes and functions. Not intended to be a [starter tutorial](https://github.com/definite-d/unda/blob/main/USERGUIDE.md).
+
+This documentation is auto-generated from Markdown-syntax docstrings using pdoc3, so please pardon the huge docstring at
+the beginning of the module&#39;s source code.
+
+&#34;&#34;&#34;
+__version__ = &#39;1.1.0&#39;
+
+from collections import deque
+from copy import copy, deepcopy
+from typing import Dict, Optional
+
+STACK_HEIGHT = 20
+RESERVED_NAMES = [&#39;target_dict&#39;, &#39;undo_stack&#39;, &#39;redo_stack&#39;, &#39;stack_height&#39;]
+DEEPCOPY = &#39;DEEPCOPY&#39;
+LOGGER = &#39;LOGGER&#39;
+
+
+def extract_changes(original, changed) -&gt; Optional[Dict]:
+    &#34;&#34;&#34;
+    Obtains and returns a dict of changes by comparing two dicts.
+
+    ## Parameters
+    ### _original:_
+    Dict to compare &#34;changed&#34; against.
+
+    ### _changed:_
+    Dict to be compared for differences.
+    &#34;&#34;&#34;
+    target_checklist = [(k, changed[k])
+                        for k in changed.keys()
+                        if k not in RESERVED_NAMES]
+    checklist_anomalies = {}
+    for key_value, value in target_checklist:
+        if original[key_value] != value or key_value not in original.keys():
+            checklist_anomalies[key_value] = value
+    return checklist_anomalies if len(checklist_anomalies) &gt; 0 else None
+
+
+class UndaClient:
+    &#34;&#34;&#34;
+    The `UndaClient` class.
+
+    Arguably the most powerful part of Unda. Performs the duties of undo and redo on behalf of another object.
+
+    ## Parameters
+
+    ### _target:_
+    The object itself.
+
+    ### _style:_
+    The `style` parameter specifies how this Client handles object state data.
+
+    There are two different styles:
+
+    * `DEEPCOPY` style: With this style, states are regarded as deepcopies of the target object.
+
+    * `LOGGER` style: This style regards states as changes to the `__dict__` attribute of the target object.
+
+    If left unspecified, Unda will resort to the best method for the current scenario.
+    To specify a desired style and override Unda&#39;s judgement (not recommended), import the name of the style you want,
+    e.g.:
+    ```python
+    from unda import LOGGER
+    ```
+    and pass it as the value of the `style` parameter.
+
+    ### _auto_first_update:_
+    If this is set to True, the Client will automatically update the undo dict once it&#39;s created, so there would be no
+    need to call `update()` after creating the Client.
+
+    ### _undo_stack:_
+    If any deque is passed, it will be used as the undo stack for the Client. If none is passed (by default), a new
+    deque will be created for that purpose.
+
+    ### _redo_stack:_
+    If any deque is passed, it will be used as the redo stack for the Client. If none is passed (by default), a new
+    deque will be created for that purpose.
+
+    ### _stack_height:_
+    The maximum number of states to store in either stack. Defaults to 20.
+
+    &#34;&#34;&#34;
+
+    def __init__(self,
+                 target: object,
+                 style: Optional[str] = None,
+                 auto_first_update: bool = True,
+                 undo_stack: Optional[deque] = None,
+                 redo_stack: Optional[deque] = None,
+                 stack_height: Optional[int] = None):
+        self.target: object = target
+        self.stack_height: Optional[int] = stack_height
+        self.undo_stack: Optional[deque] = undo_stack
+        self.redo_stack: Optional[deque] = redo_stack
+        if self.stack_height is None:
+            self.stack_height = STACK_HEIGHT
+        if self.undo_stack is None:
+            self.undo_stack = deque(maxlen=self.stack_height)
+        if self.redo_stack is None:
+            self.redo_stack = deque(maxlen=self.stack_height)
+        self.style = style
+        if self.style is None:
+            if &#39;dict&#39; in vars(self.target) and self.target.__sizeof__() &gt; self.target.__dict__.__sizeof__():
+                self.target_dict: Dict = self.__dict__.copy()
+                self.style = LOGGER
+            if &#39;dict&#39; not in vars(self.target):
+                self.style = DEEPCOPY
+        # print(self.style, self.target.__dict__.__sizeof__(), self.target.__sizeof__())
+        if auto_first_update:
+            if self.style == DEEPCOPY:
+                self.undo_stack.append(deepcopy(self.target))
+                self.clear_redo_stack()
+            if self.style == LOGGER:
+                # If the stack is full, make the oldest change permanent in the target_dict.
+                if len(self.undo_stack) == self.undo_stack.maxlen:
+                    change = self.undo_stack.popleft()
+                    self.target_dict.update(change)
+                checklist_anomalies = extract_changes(self.compile_stack(), self.__dict__)
+                self.undo_stack.append(checklist_anomalies)
+                self.clear_redo_stack()
+                del checklist_anomalies
+
+    def entrust(self, key, manager) -&gt; None:
+        &#34;&#34;&#34;
+        Adds the client to the care of an `UndoManager` for easier batch use.
+
+        ## Parameters
+        ### _key:_
+        A string used for referencing this Client directly from the `UndaManager`.
+
+        ### _manager:_
+        The `UndaManager` object to add this Client to.
+        &#34;&#34;&#34;
+        manager.objects[key] = self
+        return None
+
+    def init_unda(self,
+                  target: object,
+                  style: Optional[str] = None,
+                  auto_first_update: bool = False,
+                  undo_stack: Optional[deque] = None,
+                  redo_stack: Optional[deque] = None,
+                  stack_height: Optional[int] = None, ) -&gt; None:
+        &#34;&#34;&#34;
+        Custom initialization function.
+
+        ## Parameters
+        Same as `UndaClient()`.
+        &#34;&#34;&#34;
+        self.target: object = target
+        self.stack_height: Optional[int] = stack_height
+        self.undo_stack: Optional[deque] = undo_stack
+        self.redo_stack: Optional[deque] = redo_stack
+        if self.stack_height is None:
+            self.stack_height = STACK_HEIGHT
+        if self.undo_stack is None:
+            self.undo_stack = deque(maxlen=self.stack_height)
+        if self.redo_stack is None:
+            self.redo_stack = deque(maxlen=self.stack_height)
+        self.style = style
+        if self.style is None:
+            if &#39;dict&#39; in vars(self.target) and self.target.__sizeof__() &gt; self.target.__dict__.__sizeof__():
+                self.target_dict: Dict = self.__dict__.copy()
+                self.style = LOGGER
+            if &#39;dict&#39; not in vars(self.target):
+                self.style = DEEPCOPY
+        # print(self.style, self.target.__dict__.__sizeof__(), self.target.__sizeof__())
+        if auto_first_update:
+            if self.style == DEEPCOPY:
+                self.undo_stack.append(deepcopy(self.target))
+                self.clear_redo_stack()
+            if self.style == LOGGER:
+                # If the stack is full, make the oldest change permanent in the target_dict.
+                if len(self.undo_stack) == self.undo_stack.maxlen:
+                    change = self.undo_stack.popleft()
+                    self.target_dict.update(change)
+                checklist_anomalies = extract_changes(self.compile_stack(), self.__dict__)
+                self.undo_stack.append(checklist_anomalies)
+                self.clear_redo_stack()
+                del checklist_anomalies
+        return None
+
+    def clear_undo_stack(self) -&gt; None:
+        &#34;&#34;&#34;
+        Clears the undo stack for this object.
+        &#34;&#34;&#34;
+        self.undo_stack.clear()
+        return None
+
+    def clear_redo_stack(self) -&gt; None:
+        &#34;&#34;&#34;
+        Clears the redo stack for this object.
+        &#34;&#34;&#34;
+        self.redo_stack.clear()
+        return None
+
+    def clear_stacks(self) -&gt; None:
+        &#34;&#34;&#34;
+        Clears both the undo and redo stacks for this object.
+        &#34;&#34;&#34;
+        self.clear_undo_stack()
+        self.clear_redo_stack()
+        return None
+
+    def compile_stack(self, depth: Optional[int] = None,
+                      start_point: Optional[int] = None,
+                      stack: Optional[deque] = None) -&gt; Dict:
+        &#34;&#34;&#34;
+        Useful only when using `LOGGER` style.
+
+        Creates a version of the target dict that has all state changes in the specified stack applied.
+        By default, the specified stack is the undo stack.
+
+        ## Parameters
+        ### _depth:_
+        The number of changes to apply. Defaults to the total number of changes in the entire stack.
+
+        ### _start_point:_
+        The index of the first change to apply. Defaults to 0.
+
+        ### _stack:_
+        The stack of relevance.
+        &#34;&#34;&#34;
+        if stack is None:
+            del stack
+            stack: deque = self.undo_stack
+        if depth is None:
+            del depth
+            depth: int = len(stack)
+        if start_point is None:
+            del start_point
+            start_point: int = 0
+        changes_required = list(stack.copy())[start_point:depth]
+        result = self.target_dict.copy()
+        for name in RESERVED_NAMES:
+            if name in result.keys():
+                del result[name]
+        for change in changes_required:
+            if change is not None:
+                result.update(change)
+        return result
+
+    def update(self) -&gt; None:
+        &#34;&#34;&#34;
+        Updates the relevant stack with current state data.
+        By default, the &#34;relevant stack&#34; is the undo stack.
+        &#34;&#34;&#34;
+        if self.style == DEEPCOPY:
+            self.undo_stack.append(deepcopy(self.target))
+            self.clear_redo_stack()
+
+        if self.style == LOGGER:
+            # If the stack is full, make the oldest change permanent in the target_dict.
+            if len(self.undo_stack) == self.undo_stack.maxlen:
+                change = self.undo_stack.popleft()
+                self.target_dict.update(change)
+            checklist_anomalies = extract_changes(self.compile_stack(), self.__dict__)
+            self.undo_stack.append(checklist_anomalies)
+            self.clear_redo_stack()
+            del checklist_anomalies
+
+    def undo(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Optional[object]:
+        &#34;&#34;&#34;
+        Saves current state to the redo stack, then returns a version of the target object with the latest state data
+        in the undo stack applied.
+
+        ## Parameters
+
+        ### _depth:_
+        The number of states to skip with a single undo call. By default, it&#39;s 0, and should work for most uses.
+
+        ### _quiet:_
+        Specifies if Unda should be quiet if undo is called but there&#39;s nothing to revert to. If False, an error will
+        be returned if that happens.
+
+        ### _inplace:_
+        Useful only if the target object has a `__dict__` attribute.
+        If set to True, the `__dict__` of the target will be replaced by the `__dict__` value of the result of the undo
+        operation and returns False, thus there would be no need to re-assign the target object&#39;s variable to the
+        result (which is what should be done if this parameter is False).
+        &#34;&#34;&#34;
+        if not quiet and len(self.undo_stack) == 0:
+            raise IndexError(&#39;There\&#39;s nothing left to undo.&#39;)
+
+        if self.style == DEEPCOPY:
+            # Clear all states above the required one.
+            self.undo_stack = deque(list(self.undo_stack)[0:len(self.undo_stack) - depth + 1], maxlen=self.stack_height)
+            # Get the required state
+            result = self.undo_stack.pop()
+            # Save the state before the undo call to the redo stack.
+            self.redo_stack.append(deepcopy(self.target))
+            if inplace:
+                self.target.__dict__.update(result.__dict__)
+                return None
+            return result
+
+        if self.style == LOGGER:
+            current_differences = extract_changes(self.compile_stack(), self.__dict__)
+            self.redo_stack.append(current_differences)
+            result = self.compile_stack()
+            self.undo_stack = deque(
+                list(self.undo_stack)[0:len(self.undo_stack) - depth - 1],
+                maxlen=self.stack_height)
+            if inplace:
+                self.target.__dict__.update(result)
+                return None
+            result = copy(self.target)
+            result.__dict__.update(result)
+            return result
+
+    def redo(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Optional[object]:
+        &#34;&#34;&#34;
+        Saves current state to the redo stack, then returns a version of the target object with the latest state data
+        in the redo stack applied.
+
+        ## Parameters
+
+        ### _depth:_
+        The number of states to skip with a single redo call. By default, it&#39;s 0, and should work for most uses.
+
+        ### _quiet:_
+        Specifies if Unda should be quiet if redo is called but there&#39;s nothing to revert to. If False, an error will
+        be returned if that happens.
+
+        ### _inplace:_
+        Useful only if the target object has a `__dict__` attribute.
+        If set to True, the `__dict__` of the target will be replaced by the `__dict__` value of the result of the redo
+        operation and returns False, thus there would be no need to re-assign the target object&#39;s variable to the
+        result (which is what should be done if this parameter is False).
+        &#34;&#34;&#34;
+        if not quiet and len(self.redo_stack) == 0:
+            raise IndexError(&#39;There\&#39;s nothing left to redo.&#39;)
+
+        if self.style == DEEPCOPY:
+            # Clear all states above the required one.
+            self.redo_stack = deque(list(self.redo_stack)[0:len(self.redo_stack) - depth + 1], maxlen=self.stack_height)
+            # Get the required state
+            result = self.redo_stack.pop()
+            # Save the state before the redo call to the undo stack.
+            self.undo_stack.append(deepcopy(self.target))
+            if inplace:
+                self.target.__dict__.update(result.__dict__)
+                return None
+            return result
+
+        if self.style == LOGGER:
+            current_differences = extract_changes(self.compile_stack(), self.__dict__)
+            self.undo_stack.append(current_differences)
+            result = self.compile_stack()
+            self.redo_stack = deque(
+                list(self.redo_stack)[0:len(self.redo_stack) - depth - 1],
+                maxlen=self.stack_height)
+            if inplace:
+                self.target.__dict__.update(result)
+                return None
+            result = copy(self.target)
+            result.__dict__.update(result)
+            return result
+
+
+class UndaObject:
+    &#34;&#34;&#34;
+    A custom class which gives update, undo and redo abilities to any class that inherits from it by adding an
+    UndaClient object to its attributes.
+
+    The easiest way to use Unda in my opinion.
+
+    To use,
+
+    1. Inherit from this class when creating your desired class, (e.g. MyObject(UndaObject))
+
+    2. At the END of the `__init()__` function (if it exists), call `self.init_fondue()`,
+
+    3. At the BEGINNING of any method which may alter the attributes of the objects, call `self.update()`.
+
+    That&#39;s it. Any method which step 3 affected can be undone by calling &#34;self.undo()&#34;. Do note that if your custom
+    class has no `__init__()`, there&#39;s no need to bother with step 1.
+
+    ## Parameters
+    Same as `UndaClient()` where they apply.
+    &#34;&#34;&#34;
+
+    def __init__(self, style: Optional[str] = None, stack_height: Optional[int] = None):
+        self.client = UndaClient(self, style=style, stack_height=stack_height)
+
+    def init_fondue(self, style: Optional[str] = None, stack_height: Optional[int] = None):
+        &#34;&#34;&#34;
+        Custom Initialization function. Comes in especially handy if your custom object already overrides
+        `__init__()`.
+
+        ## Parameters
+        Same as `UndaClient()` where they apply.
+        &#34;&#34;&#34;
+        self.client = UndaClient(self, style=style, stack_height=stack_height)
+
+    def update(self):
+        &#34;&#34;&#34;
+        Same as `UndaClient.update()`.
+        &#34;&#34;&#34;
+        self.client.update()
+
+    def undo(self, depth: int = 0, quiet: bool = False, inplace: bool = True):
+        &#34;&#34;&#34;
+        Same as `UndaClient.undo()`.
+        &#34;&#34;&#34;
+        return self.client.undo(depth, quiet, inplace)
+
+    def redo(self, depth: int = 0, quiet: bool = False, inplace: bool = True):
+        &#34;&#34;&#34;
+        Same as `UndaClient.redo()`.
+        &#34;&#34;&#34;
+        return self.client.redo(depth, quiet, inplace)
+
+class UndaManager:
+    &#34;&#34;&#34;
+    `UndaManager` class. Manages undo and redo operations for all objects in its care. Best for managing Undo and Redo
+    functionality for multiple objects and existing UndaClients.
+
+    To use, you can either:
+
+    * pass a dict of `{key: object (or UndaClient)}` pairs as the `starter_objects` parameter,
+
+    * leave the parameters blank and use the `add_client()` or &#34;add_clients()` methods to entrust existing
+      `UndaClient`s,
+
+    * or use the `add_object()` or `add_objects()` methods to add objects directly.
+
+    Please do not attempt to add an object by using `UndaManager.objects[key] = target` unless the &#34;target&#34; is an
+    `UndaClient`. This will not work as intended, because `UndaManager`s deal with `UndaClient`s, and not the objects
+    themselves. Always use the `add_object()` function instead for ordinary objects.
+    
+    ## Parameters
+    ### _starter_objects:_
+    A dict of objects/`UndaClient`s/both to be entrusted to the UndaManager in the pattern: 
+    `{key: object (or UndaClient)}`
+     
+    ### _stack_height:_
+    An integer representing the maximum number of states to store in any stack created by this `UndaManager`. 
+     
+    &#34;&#34;&#34;
+    starter_objects: Optional[Dict] = None
+
+    def __init__(self, starter_objects: Optional[Dict] = None, stack_height: int = STACK_HEIGHT) -&gt; None:
+        self.stack_height: int = stack_height
+        self.starter_objects: Optional[Dict] = starter_objects
+        self.objects: Dict = {}
+        if self.starter_objects is not None:
+            self.objects.update({x: UndaClient(self.starter_objects[x])
+                                 for x in self.starter_objects if not issubclass(x, UndaClient)})
+            self.objects.update({x: self.starter_objects[x]
+                                 for x in self.starter_objects if issubclass(x, UndaClient)})
+
+    def add_object(self, key: str, target: object) -&gt; None:
+        &#34;&#34;&#34;
+        Entrusts an object into the UndaManager&#39;s care.
+        Please do not attempt to add an object by using &#34;UndaManager.objects[key] = target&#34; (direct dictionary edits),
+        as this will not work as intended. Always use this function instead.
+        
+        ## Parameters
+        ### _key:_
+        A key to reference the object. Could be anything, even the class name.
+        
+        ### _target:_
+        The object itself.
+        &#34;&#34;&#34;
+        self.objects[key] = UndaClient(target)
+
+    def add_client(self, key: str, client: UndaClient) -&gt; None:
+        &#34;&#34;&#34;
+        Entrusts an already existing UndaClient object into the UndaManager&#39;s care.
+        Unlike &#34;add_object()&#34;, direct object dictionary edits to add a Client will work normally. It&#39;s ill-advised
+        though; it&#39;s best to use this function.
+        
+        ## Parameters
+        ### _key:_
+        A key to reference the object. Could be anything, even the class name.
+        
+        ### _client:_
+        The UndaClient object to entrust.
+        &#34;&#34;&#34;
+        client.entrust(key, self)
+
+    def update_all(self) -&gt; None:
+        &#34;&#34;&#34;
+        Same as &#34;update&#34;, but applies it to all keys.
+        &#34;&#34;&#34;
+        for key in self.objects.keys():
+            self.objects[key].update()
+
+    def clear_all_stacks(self) -&gt; None:
+        &#34;&#34;&#34;
+        Calls the &#34;clear_stacks&#34; function for all objects.
+        &#34;&#34;&#34;
+        for key in self.objects.keys():
+            self.objects[key].clear_stacks()
+
+    def clear_undo_stacks(self) -&gt; None:
+        &#34;&#34;&#34;
+        Calls the &#34;clear_undo_stack&#34; function for all objects.
+        &#34;&#34;&#34;
+        for key in self.objects.keys():
+            self.objects[key].clear_undo_stack()
+
+    def clear_redo_stacks(self) -&gt; None:
+        &#34;&#34;&#34;
+        Calls the &#34;clear_redo_stack&#34; function for all objects.
+        &#34;&#34;&#34;
+        for key in self.objects.keys():
+            self.objects[key].clear_redo_stack()
+
+    def undo(self, key, depth: int = 0, quiet: bool = False, inplace: bool = False):
+        &#34;&#34;&#34;
+        Calls the `undo()` function of the UndaClient referenced by the specified key.
+
+        ## Parameters
+
+        ### _key_:
+        The string used to reference a specific `UndaClient`.
+
+        All other parameters are the same as `UndaClient.undo()` where they apply.
+        &#34;&#34;&#34;
+        self.objects[key].undo(depth, quiet, inplace)
+
+    def undo_all(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Dict:
+        &#34;&#34;&#34;
+        Same as undo, but applies to all objects in the UndaManager&#39;s care, and returns a dict in the format:
+        {key: result}
+
+        ## Parameters
+        Same as `UndaClient.undo()`
+        &#34;&#34;&#34;
+        return {key: self.objects[key].undo(depth, quiet, inplace) for key in self.objects.keys()}
+    
+    def redo(self, key, depth: int = 0, quiet: bool = False, inplace: bool = False):
+        &#34;&#34;&#34;
+        Calls the `redo()` function of the UndaClient referenced by the specified key.
+
+        ## Parameters
+
+        ### _key_:
+        The string used to reference a specific `UndaClient`.
+
+        All other parameters are the same as `UndaClient.redo()` where they apply.
+        &#34;&#34;&#34;
+        self.objects[key].redo(depth, quiet, inplace)
+
+    def redo_all(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Dict:
+        &#34;&#34;&#34;
+        Same as redo, but applies to all objects in the UndaManager&#39;s care, and returns a dict in the format:
+        {key: result}
+
+        ## Parameters
+        Same as `UndaClient.redo()`
+        &#34;&#34;&#34;
+        return {key: self.objects[key].redo(depth, quiet, inplace) for key in self.objects.keys()}</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="unda.extract_changes"><code class="name flex">
+<span>def <span class="ident">extract_changes</span></span>(<span>original, changed) ‑> Optional[Dict[~KT, ~VT]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Obtains and returns a dict of changes by comparing two dicts.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="original"><em>original:</em></h3>
+<p>Dict to compare "changed" against.</p>
+<h3 id="changed"><em>changed:</em></h3>
+<p>Dict to be compared for differences.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_changes(original, changed) -&gt; Optional[Dict]:
+    &#34;&#34;&#34;
+    Obtains and returns a dict of changes by comparing two dicts.
+
+    ## Parameters
+    ### _original:_
+    Dict to compare &#34;changed&#34; against.
+
+    ### _changed:_
+    Dict to be compared for differences.
+    &#34;&#34;&#34;
+    target_checklist = [(k, changed[k])
+                        for k in changed.keys()
+                        if k not in RESERVED_NAMES]
+    checklist_anomalies = {}
+    for key_value, value in target_checklist:
+        if original[key_value] != value or key_value not in original.keys():
+            checklist_anomalies[key_value] = value
+    return checklist_anomalies if len(checklist_anomalies) &gt; 0 else None</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="unda.UndaClient"><code class="flex name class">
+<span>class <span class="ident">UndaClient</span></span>
+<span>(</span><span>target: object, style: Optional[str] = None, auto_first_update: bool = True, undo_stack: Optional[collections.deque] = None, redo_stack: Optional[collections.deque] = None, stack_height: Optional[int] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The <code><a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a></code> class.</p>
+<p>Arguably the most powerful part of Unda. Performs the duties of undo and redo on behalf of another object.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="target"><em>target:</em></h3>
+<p>The object itself.</p>
+<h3 id="style"><em>style:</em></h3>
+<p>The <code>style</code> parameter specifies how this Client handles object state data.</p>
+<p>There are two different styles:</p>
+<ul>
+<li>
+<p><code>DEEPCOPY</code> style: With this style, states are regarded as deepcopies of the target object.</p>
+</li>
+<li>
+<p><code>LOGGER</code> style: This style regards states as changes to the <code>__dict__</code> attribute of the target object.</p>
+</li>
+</ul>
+<p>If left unspecified, Unda will resort to the best method for the current scenario.
+To specify a desired style and override Unda's judgement (not recommended), import the name of the style you want,
+e.g.:</p>
+<pre><code class="language-python">from unda import LOGGER
+</code></pre>
+<p>and pass it as the value of the <code>style</code> parameter.</p>
+<h3 id="auto_first_update"><em>auto_first_update:</em></h3>
+<p>If this is set to True, the Client will automatically update the undo dict once it's created, so there would be no
+need to call <code>update()</code> after creating the Client.</p>
+<h3 id="undo_stack"><em>undo_stack:</em></h3>
+<p>If any deque is passed, it will be used as the undo stack for the Client. If none is passed (by default), a new
+deque will be created for that purpose.</p>
+<h3 id="redo_stack"><em>redo_stack:</em></h3>
+<p>If any deque is passed, it will be used as the redo stack for the Client. If none is passed (by default), a new
+deque will be created for that purpose.</p>
+<h3 id="stack_height"><em>stack_height:</em></h3>
+<p>The maximum number of states to store in either stack. Defaults to 20.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UndaClient:
+    &#34;&#34;&#34;
+    The `UndaClient` class.
+
+    Arguably the most powerful part of Unda. Performs the duties of undo and redo on behalf of another object.
+
+    ## Parameters
+
+    ### _target:_
+    The object itself.
+
+    ### _style:_
+    The `style` parameter specifies how this Client handles object state data.
+
+    There are two different styles:
+
+    * `DEEPCOPY` style: With this style, states are regarded as deepcopies of the target object.
+
+    * `LOGGER` style: This style regards states as changes to the `__dict__` attribute of the target object.
+
+    If left unspecified, Unda will resort to the best method for the current scenario.
+    To specify a desired style and override Unda&#39;s judgement (not recommended), import the name of the style you want,
+    e.g.:
+    ```python
+    from unda import LOGGER
+    ```
+    and pass it as the value of the `style` parameter.
+
+    ### _auto_first_update:_
+    If this is set to True, the Client will automatically update the undo dict once it&#39;s created, so there would be no
+    need to call `update()` after creating the Client.
+
+    ### _undo_stack:_
+    If any deque is passed, it will be used as the undo stack for the Client. If none is passed (by default), a new
+    deque will be created for that purpose.
+
+    ### _redo_stack:_
+    If any deque is passed, it will be used as the redo stack for the Client. If none is passed (by default), a new
+    deque will be created for that purpose.
+
+    ### _stack_height:_
+    The maximum number of states to store in either stack. Defaults to 20.
+
+    &#34;&#34;&#34;
+
+    def __init__(self,
+                 target: object,
+                 style: Optional[str] = None,
+                 auto_first_update: bool = True,
+                 undo_stack: Optional[deque] = None,
+                 redo_stack: Optional[deque] = None,
+                 stack_height: Optional[int] = None):
+        self.target: object = target
+        self.stack_height: Optional[int] = stack_height
+        self.undo_stack: Optional[deque] = undo_stack
+        self.redo_stack: Optional[deque] = redo_stack
+        if self.stack_height is None:
+            self.stack_height = STACK_HEIGHT
+        if self.undo_stack is None:
+            self.undo_stack = deque(maxlen=self.stack_height)
+        if self.redo_stack is None:
+            self.redo_stack = deque(maxlen=self.stack_height)
+        self.style = style
+        if self.style is None:
+            if &#39;dict&#39; in vars(self.target) and self.target.__sizeof__() &gt; self.target.__dict__.__sizeof__():
+                self.target_dict: Dict = self.__dict__.copy()
+                self.style = LOGGER
+            if &#39;dict&#39; not in vars(self.target):
+                self.style = DEEPCOPY
+        # print(self.style, self.target.__dict__.__sizeof__(), self.target.__sizeof__())
+        if auto_first_update:
+            if self.style == DEEPCOPY:
+                self.undo_stack.append(deepcopy(self.target))
+                self.clear_redo_stack()
+            if self.style == LOGGER:
+                # If the stack is full, make the oldest change permanent in the target_dict.
+                if len(self.undo_stack) == self.undo_stack.maxlen:
+                    change = self.undo_stack.popleft()
+                    self.target_dict.update(change)
+                checklist_anomalies = extract_changes(self.compile_stack(), self.__dict__)
+                self.undo_stack.append(checklist_anomalies)
+                self.clear_redo_stack()
+                del checklist_anomalies
+
+    def entrust(self, key, manager) -&gt; None:
+        &#34;&#34;&#34;
+        Adds the client to the care of an `UndoManager` for easier batch use.
+
+        ## Parameters
+        ### _key:_
+        A string used for referencing this Client directly from the `UndaManager`.
+
+        ### _manager:_
+        The `UndaManager` object to add this Client to.
+        &#34;&#34;&#34;
+        manager.objects[key] = self
+        return None
+
+    def init_unda(self,
+                  target: object,
+                  style: Optional[str] = None,
+                  auto_first_update: bool = False,
+                  undo_stack: Optional[deque] = None,
+                  redo_stack: Optional[deque] = None,
+                  stack_height: Optional[int] = None, ) -&gt; None:
+        &#34;&#34;&#34;
+        Custom initialization function.
+
+        ## Parameters
+        Same as `UndaClient()`.
+        &#34;&#34;&#34;
+        self.target: object = target
+        self.stack_height: Optional[int] = stack_height
+        self.undo_stack: Optional[deque] = undo_stack
+        self.redo_stack: Optional[deque] = redo_stack
+        if self.stack_height is None:
+            self.stack_height = STACK_HEIGHT
+        if self.undo_stack is None:
+            self.undo_stack = deque(maxlen=self.stack_height)
+        if self.redo_stack is None:
+            self.redo_stack = deque(maxlen=self.stack_height)
+        self.style = style
+        if self.style is None:
+            if &#39;dict&#39; in vars(self.target) and self.target.__sizeof__() &gt; self.target.__dict__.__sizeof__():
+                self.target_dict: Dict = self.__dict__.copy()
+                self.style = LOGGER
+            if &#39;dict&#39; not in vars(self.target):
+                self.style = DEEPCOPY
+        # print(self.style, self.target.__dict__.__sizeof__(), self.target.__sizeof__())
+        if auto_first_update:
+            if self.style == DEEPCOPY:
+                self.undo_stack.append(deepcopy(self.target))
+                self.clear_redo_stack()
+            if self.style == LOGGER:
+                # If the stack is full, make the oldest change permanent in the target_dict.
+                if len(self.undo_stack) == self.undo_stack.maxlen:
+                    change = self.undo_stack.popleft()
+                    self.target_dict.update(change)
+                checklist_anomalies = extract_changes(self.compile_stack(), self.__dict__)
+                self.undo_stack.append(checklist_anomalies)
+                self.clear_redo_stack()
+                del checklist_anomalies
+        return None
+
+    def clear_undo_stack(self) -&gt; None:
+        &#34;&#34;&#34;
+        Clears the undo stack for this object.
+        &#34;&#34;&#34;
+        self.undo_stack.clear()
+        return None
+
+    def clear_redo_stack(self) -&gt; None:
+        &#34;&#34;&#34;
+        Clears the redo stack for this object.
+        &#34;&#34;&#34;
+        self.redo_stack.clear()
+        return None
+
+    def clear_stacks(self) -&gt; None:
+        &#34;&#34;&#34;
+        Clears both the undo and redo stacks for this object.
+        &#34;&#34;&#34;
+        self.clear_undo_stack()
+        self.clear_redo_stack()
+        return None
+
+    def compile_stack(self, depth: Optional[int] = None,
+                      start_point: Optional[int] = None,
+                      stack: Optional[deque] = None) -&gt; Dict:
+        &#34;&#34;&#34;
+        Useful only when using `LOGGER` style.
+
+        Creates a version of the target dict that has all state changes in the specified stack applied.
+        By default, the specified stack is the undo stack.
+
+        ## Parameters
+        ### _depth:_
+        The number of changes to apply. Defaults to the total number of changes in the entire stack.
+
+        ### _start_point:_
+        The index of the first change to apply. Defaults to 0.
+
+        ### _stack:_
+        The stack of relevance.
+        &#34;&#34;&#34;
+        if stack is None:
+            del stack
+            stack: deque = self.undo_stack
+        if depth is None:
+            del depth
+            depth: int = len(stack)
+        if start_point is None:
+            del start_point
+            start_point: int = 0
+        changes_required = list(stack.copy())[start_point:depth]
+        result = self.target_dict.copy()
+        for name in RESERVED_NAMES:
+            if name in result.keys():
+                del result[name]
+        for change in changes_required:
+            if change is not None:
+                result.update(change)
+        return result
+
+    def update(self) -&gt; None:
+        &#34;&#34;&#34;
+        Updates the relevant stack with current state data.
+        By default, the &#34;relevant stack&#34; is the undo stack.
+        &#34;&#34;&#34;
+        if self.style == DEEPCOPY:
+            self.undo_stack.append(deepcopy(self.target))
+            self.clear_redo_stack()
+
+        if self.style == LOGGER:
+            # If the stack is full, make the oldest change permanent in the target_dict.
+            if len(self.undo_stack) == self.undo_stack.maxlen:
+                change = self.undo_stack.popleft()
+                self.target_dict.update(change)
+            checklist_anomalies = extract_changes(self.compile_stack(), self.__dict__)
+            self.undo_stack.append(checklist_anomalies)
+            self.clear_redo_stack()
+            del checklist_anomalies
+
+    def undo(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Optional[object]:
+        &#34;&#34;&#34;
+        Saves current state to the redo stack, then returns a version of the target object with the latest state data
+        in the undo stack applied.
+
+        ## Parameters
+
+        ### _depth:_
+        The number of states to skip with a single undo call. By default, it&#39;s 0, and should work for most uses.
+
+        ### _quiet:_
+        Specifies if Unda should be quiet if undo is called but there&#39;s nothing to revert to. If False, an error will
+        be returned if that happens.
+
+        ### _inplace:_
+        Useful only if the target object has a `__dict__` attribute.
+        If set to True, the `__dict__` of the target will be replaced by the `__dict__` value of the result of the undo
+        operation and returns False, thus there would be no need to re-assign the target object&#39;s variable to the
+        result (which is what should be done if this parameter is False).
+        &#34;&#34;&#34;
+        if not quiet and len(self.undo_stack) == 0:
+            raise IndexError(&#39;There\&#39;s nothing left to undo.&#39;)
+
+        if self.style == DEEPCOPY:
+            # Clear all states above the required one.
+            self.undo_stack = deque(list(self.undo_stack)[0:len(self.undo_stack) - depth + 1], maxlen=self.stack_height)
+            # Get the required state
+            result = self.undo_stack.pop()
+            # Save the state before the undo call to the redo stack.
+            self.redo_stack.append(deepcopy(self.target))
+            if inplace:
+                self.target.__dict__.update(result.__dict__)
+                return None
+            return result
+
+        if self.style == LOGGER:
+            current_differences = extract_changes(self.compile_stack(), self.__dict__)
+            self.redo_stack.append(current_differences)
+            result = self.compile_stack()
+            self.undo_stack = deque(
+                list(self.undo_stack)[0:len(self.undo_stack) - depth - 1],
+                maxlen=self.stack_height)
+            if inplace:
+                self.target.__dict__.update(result)
+                return None
+            result = copy(self.target)
+            result.__dict__.update(result)
+            return result
+
+    def redo(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Optional[object]:
+        &#34;&#34;&#34;
+        Saves current state to the redo stack, then returns a version of the target object with the latest state data
+        in the redo stack applied.
+
+        ## Parameters
+
+        ### _depth:_
+        The number of states to skip with a single redo call. By default, it&#39;s 0, and should work for most uses.
+
+        ### _quiet:_
+        Specifies if Unda should be quiet if redo is called but there&#39;s nothing to revert to. If False, an error will
+        be returned if that happens.
+
+        ### _inplace:_
+        Useful only if the target object has a `__dict__` attribute.
+        If set to True, the `__dict__` of the target will be replaced by the `__dict__` value of the result of the redo
+        operation and returns False, thus there would be no need to re-assign the target object&#39;s variable to the
+        result (which is what should be done if this parameter is False).
+        &#34;&#34;&#34;
+        if not quiet and len(self.redo_stack) == 0:
+            raise IndexError(&#39;There\&#39;s nothing left to redo.&#39;)
+
+        if self.style == DEEPCOPY:
+            # Clear all states above the required one.
+            self.redo_stack = deque(list(self.redo_stack)[0:len(self.redo_stack) - depth + 1], maxlen=self.stack_height)
+            # Get the required state
+            result = self.redo_stack.pop()
+            # Save the state before the redo call to the undo stack.
+            self.undo_stack.append(deepcopy(self.target))
+            if inplace:
+                self.target.__dict__.update(result.__dict__)
+                return None
+            return result
+
+        if self.style == LOGGER:
+            current_differences = extract_changes(self.compile_stack(), self.__dict__)
+            self.undo_stack.append(current_differences)
+            result = self.compile_stack()
+            self.redo_stack = deque(
+                list(self.redo_stack)[0:len(self.redo_stack) - depth - 1],
+                maxlen=self.stack_height)
+            if inplace:
+                self.target.__dict__.update(result)
+                return None
+            result = copy(self.target)
+            result.__dict__.update(result)
+            return result</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="unda.UndaClient.clear_redo_stack"><code class="name flex">
+<span>def <span class="ident">clear_redo_stack</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Clears the redo stack for this object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clear_redo_stack(self) -&gt; None:
+    &#34;&#34;&#34;
+    Clears the redo stack for this object.
+    &#34;&#34;&#34;
+    self.redo_stack.clear()
+    return None</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaClient.clear_stacks"><code class="name flex">
+<span>def <span class="ident">clear_stacks</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Clears both the undo and redo stacks for this object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clear_stacks(self) -&gt; None:
+    &#34;&#34;&#34;
+    Clears both the undo and redo stacks for this object.
+    &#34;&#34;&#34;
+    self.clear_undo_stack()
+    self.clear_redo_stack()
+    return None</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaClient.clear_undo_stack"><code class="name flex">
+<span>def <span class="ident">clear_undo_stack</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Clears the undo stack for this object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clear_undo_stack(self) -&gt; None:
+    &#34;&#34;&#34;
+    Clears the undo stack for this object.
+    &#34;&#34;&#34;
+    self.undo_stack.clear()
+    return None</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaClient.compile_stack"><code class="name flex">
+<span>def <span class="ident">compile_stack</span></span>(<span>self, depth: Optional[int] = None, start_point: Optional[int] = None, stack: Optional[collections.deque] = None) ‑> Dict[~KT, ~VT]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Useful only when using <code>LOGGER</code> style.</p>
+<p>Creates a version of the target dict that has all state changes in the specified stack applied.
+By default, the specified stack is the undo stack.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="depth"><em>depth:</em></h3>
+<p>The number of changes to apply. Defaults to the total number of changes in the entire stack.</p>
+<h3 id="start_point"><em>start_point:</em></h3>
+<p>The index of the first change to apply. Defaults to 0.</p>
+<h3 id="stack"><em>stack:</em></h3>
+<p>The stack of relevance.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compile_stack(self, depth: Optional[int] = None,
+                  start_point: Optional[int] = None,
+                  stack: Optional[deque] = None) -&gt; Dict:
+    &#34;&#34;&#34;
+    Useful only when using `LOGGER` style.
+
+    Creates a version of the target dict that has all state changes in the specified stack applied.
+    By default, the specified stack is the undo stack.
+
+    ## Parameters
+    ### _depth:_
+    The number of changes to apply. Defaults to the total number of changes in the entire stack.
+
+    ### _start_point:_
+    The index of the first change to apply. Defaults to 0.
+
+    ### _stack:_
+    The stack of relevance.
+    &#34;&#34;&#34;
+    if stack is None:
+        del stack
+        stack: deque = self.undo_stack
+    if depth is None:
+        del depth
+        depth: int = len(stack)
+    if start_point is None:
+        del start_point
+        start_point: int = 0
+    changes_required = list(stack.copy())[start_point:depth]
+    result = self.target_dict.copy()
+    for name in RESERVED_NAMES:
+        if name in result.keys():
+            del result[name]
+    for change in changes_required:
+        if change is not None:
+            result.update(change)
+    return result</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaClient.entrust"><code class="name flex">
+<span>def <span class="ident">entrust</span></span>(<span>self, key, manager) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds the client to the care of an <code>UndoManager</code> for easier batch use.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="key"><em>key:</em></h3>
+<p>A string used for referencing this Client directly from the <code><a title="unda.UndaManager" href="#unda.UndaManager">UndaManager</a></code>.</p>
+<h3 id="manager"><em>manager:</em></h3>
+<p>The <code><a title="unda.UndaManager" href="#unda.UndaManager">UndaManager</a></code> object to add this Client to.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def entrust(self, key, manager) -&gt; None:
+    &#34;&#34;&#34;
+    Adds the client to the care of an `UndoManager` for easier batch use.
+
+    ## Parameters
+    ### _key:_
+    A string used for referencing this Client directly from the `UndaManager`.
+
+    ### _manager:_
+    The `UndaManager` object to add this Client to.
+    &#34;&#34;&#34;
+    manager.objects[key] = self
+    return None</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaClient.init_unda"><code class="name flex">
+<span>def <span class="ident">init_unda</span></span>(<span>self, target: object, style: Optional[str] = None, auto_first_update: bool = False, undo_stack: Optional[collections.deque] = None, redo_stack: Optional[collections.deque] = None, stack_height: Optional[int] = None) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Custom initialization function.</p>
+<h2 id="parameters">Parameters</h2>
+<p>Same as <code><a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_unda(self,
+              target: object,
+              style: Optional[str] = None,
+              auto_first_update: bool = False,
+              undo_stack: Optional[deque] = None,
+              redo_stack: Optional[deque] = None,
+              stack_height: Optional[int] = None, ) -&gt; None:
+    &#34;&#34;&#34;
+    Custom initialization function.
+
+    ## Parameters
+    Same as `UndaClient()`.
+    &#34;&#34;&#34;
+    self.target: object = target
+    self.stack_height: Optional[int] = stack_height
+    self.undo_stack: Optional[deque] = undo_stack
+    self.redo_stack: Optional[deque] = redo_stack
+    if self.stack_height is None:
+        self.stack_height = STACK_HEIGHT
+    if self.undo_stack is None:
+        self.undo_stack = deque(maxlen=self.stack_height)
+    if self.redo_stack is None:
+        self.redo_stack = deque(maxlen=self.stack_height)
+    self.style = style
+    if self.style is None:
+        if &#39;dict&#39; in vars(self.target) and self.target.__sizeof__() &gt; self.target.__dict__.__sizeof__():
+            self.target_dict: Dict = self.__dict__.copy()
+            self.style = LOGGER
+        if &#39;dict&#39; not in vars(self.target):
+            self.style = DEEPCOPY
+    # print(self.style, self.target.__dict__.__sizeof__(), self.target.__sizeof__())
+    if auto_first_update:
+        if self.style == DEEPCOPY:
+            self.undo_stack.append(deepcopy(self.target))
+            self.clear_redo_stack()
+        if self.style == LOGGER:
+            # If the stack is full, make the oldest change permanent in the target_dict.
+            if len(self.undo_stack) == self.undo_stack.maxlen:
+                change = self.undo_stack.popleft()
+                self.target_dict.update(change)
+            checklist_anomalies = extract_changes(self.compile_stack(), self.__dict__)
+            self.undo_stack.append(checklist_anomalies)
+            self.clear_redo_stack()
+            del checklist_anomalies
+    return None</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaClient.redo"><code class="name flex">
+<span>def <span class="ident">redo</span></span>(<span>self, depth: int = 0, quiet: bool = False, inplace: bool = False) ‑> Optional[object]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Saves current state to the redo stack, then returns a version of the target object with the latest state data
+in the redo stack applied.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="depth"><em>depth:</em></h3>
+<p>The number of states to skip with a single redo call. By default, it's 0, and should work for most uses.</p>
+<h3 id="quiet"><em>quiet:</em></h3>
+<p>Specifies if Unda should be quiet if redo is called but there's nothing to revert to. If False, an error will
+be returned if that happens.</p>
+<h3 id="inplace"><em>inplace:</em></h3>
+<p>Useful only if the target object has a <code>__dict__</code> attribute.
+If set to True, the <code>__dict__</code> of the target will be replaced by the <code>__dict__</code> value of the result of the redo
+operation and returns False, thus there would be no need to re-assign the target object's variable to the
+result (which is what should be done if this parameter is False).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def redo(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Optional[object]:
+    &#34;&#34;&#34;
+    Saves current state to the redo stack, then returns a version of the target object with the latest state data
+    in the redo stack applied.
+
+    ## Parameters
+
+    ### _depth:_
+    The number of states to skip with a single redo call. By default, it&#39;s 0, and should work for most uses.
+
+    ### _quiet:_
+    Specifies if Unda should be quiet if redo is called but there&#39;s nothing to revert to. If False, an error will
+    be returned if that happens.
+
+    ### _inplace:_
+    Useful only if the target object has a `__dict__` attribute.
+    If set to True, the `__dict__` of the target will be replaced by the `__dict__` value of the result of the redo
+    operation and returns False, thus there would be no need to re-assign the target object&#39;s variable to the
+    result (which is what should be done if this parameter is False).
+    &#34;&#34;&#34;
+    if not quiet and len(self.redo_stack) == 0:
+        raise IndexError(&#39;There\&#39;s nothing left to redo.&#39;)
+
+    if self.style == DEEPCOPY:
+        # Clear all states above the required one.
+        self.redo_stack = deque(list(self.redo_stack)[0:len(self.redo_stack) - depth + 1], maxlen=self.stack_height)
+        # Get the required state
+        result = self.redo_stack.pop()
+        # Save the state before the redo call to the undo stack.
+        self.undo_stack.append(deepcopy(self.target))
+        if inplace:
+            self.target.__dict__.update(result.__dict__)
+            return None
+        return result
+
+    if self.style == LOGGER:
+        current_differences = extract_changes(self.compile_stack(), self.__dict__)
+        self.undo_stack.append(current_differences)
+        result = self.compile_stack()
+        self.redo_stack = deque(
+            list(self.redo_stack)[0:len(self.redo_stack) - depth - 1],
+            maxlen=self.stack_height)
+        if inplace:
+            self.target.__dict__.update(result)
+            return None
+        result = copy(self.target)
+        result.__dict__.update(result)
+        return result</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaClient.undo"><code class="name flex">
+<span>def <span class="ident">undo</span></span>(<span>self, depth: int = 0, quiet: bool = False, inplace: bool = False) ‑> Optional[object]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Saves current state to the redo stack, then returns a version of the target object with the latest state data
+in the undo stack applied.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="depth"><em>depth:</em></h3>
+<p>The number of states to skip with a single undo call. By default, it's 0, and should work for most uses.</p>
+<h3 id="quiet"><em>quiet:</em></h3>
+<p>Specifies if Unda should be quiet if undo is called but there's nothing to revert to. If False, an error will
+be returned if that happens.</p>
+<h3 id="inplace"><em>inplace:</em></h3>
+<p>Useful only if the target object has a <code>__dict__</code> attribute.
+If set to True, the <code>__dict__</code> of the target will be replaced by the <code>__dict__</code> value of the result of the undo
+operation and returns False, thus there would be no need to re-assign the target object's variable to the
+result (which is what should be done if this parameter is False).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def undo(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Optional[object]:
+    &#34;&#34;&#34;
+    Saves current state to the redo stack, then returns a version of the target object with the latest state data
+    in the undo stack applied.
+
+    ## Parameters
+
+    ### _depth:_
+    The number of states to skip with a single undo call. By default, it&#39;s 0, and should work for most uses.
+
+    ### _quiet:_
+    Specifies if Unda should be quiet if undo is called but there&#39;s nothing to revert to. If False, an error will
+    be returned if that happens.
+
+    ### _inplace:_
+    Useful only if the target object has a `__dict__` attribute.
+    If set to True, the `__dict__` of the target will be replaced by the `__dict__` value of the result of the undo
+    operation and returns False, thus there would be no need to re-assign the target object&#39;s variable to the
+    result (which is what should be done if this parameter is False).
+    &#34;&#34;&#34;
+    if not quiet and len(self.undo_stack) == 0:
+        raise IndexError(&#39;There\&#39;s nothing left to undo.&#39;)
+
+    if self.style == DEEPCOPY:
+        # Clear all states above the required one.
+        self.undo_stack = deque(list(self.undo_stack)[0:len(self.undo_stack) - depth + 1], maxlen=self.stack_height)
+        # Get the required state
+        result = self.undo_stack.pop()
+        # Save the state before the undo call to the redo stack.
+        self.redo_stack.append(deepcopy(self.target))
+        if inplace:
+            self.target.__dict__.update(result.__dict__)
+            return None
+        return result
+
+    if self.style == LOGGER:
+        current_differences = extract_changes(self.compile_stack(), self.__dict__)
+        self.redo_stack.append(current_differences)
+        result = self.compile_stack()
+        self.undo_stack = deque(
+            list(self.undo_stack)[0:len(self.undo_stack) - depth - 1],
+            maxlen=self.stack_height)
+        if inplace:
+            self.target.__dict__.update(result)
+            return None
+        result = copy(self.target)
+        result.__dict__.update(result)
+        return result</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaClient.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates the relevant stack with current state data.
+By default, the "relevant stack" is the undo stack.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self) -&gt; None:
+    &#34;&#34;&#34;
+    Updates the relevant stack with current state data.
+    By default, the &#34;relevant stack&#34; is the undo stack.
+    &#34;&#34;&#34;
+    if self.style == DEEPCOPY:
+        self.undo_stack.append(deepcopy(self.target))
+        self.clear_redo_stack()
+
+    if self.style == LOGGER:
+        # If the stack is full, make the oldest change permanent in the target_dict.
+        if len(self.undo_stack) == self.undo_stack.maxlen:
+            change = self.undo_stack.popleft()
+            self.target_dict.update(change)
+        checklist_anomalies = extract_changes(self.compile_stack(), self.__dict__)
+        self.undo_stack.append(checklist_anomalies)
+        self.clear_redo_stack()
+        del checklist_anomalies</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="unda.UndaManager"><code class="flex name class">
+<span>class <span class="ident">UndaManager</span></span>
+<span>(</span><span>starter_objects: Optional[Dict[~KT, ~VT]] = None, stack_height: int = 20)</span>
+</code></dt>
+<dd>
+<div class="desc"><p><code><a title="unda.UndaManager" href="#unda.UndaManager">UndaManager</a></code> class. Manages undo and redo operations for all objects in its care. Best for managing Undo and Redo
+functionality for multiple objects and existing UndaClients.</p>
+<p>To use, you can either:</p>
+<ul>
+<li>
+<p>pass a dict of <code>{key: object (or UndaClient)}</code> pairs as the <code>starter_objects</code> parameter,</p>
+</li>
+<li>
+<p>leave the parameters blank and use the <code>add_client()</code> or "add_clients()` methods to entrust existing
+<code><a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a></code>s,</p>
+</li>
+<li>
+<p>or use the <code>add_object()</code> or <code>add_objects()</code> methods to add objects directly.</p>
+</li>
+</ul>
+<p>Please do not attempt to add an object by using <code>UndaManager.objects[key] = target</code> unless the "target" is an
+<code><a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a></code>. This will not work as intended, because <code><a title="unda.UndaManager" href="#unda.UndaManager">UndaManager</a></code>s deal with <code><a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a></code>s, and not the objects
+themselves. Always use the <code>add_object()</code> function instead for ordinary objects.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="starter_objects"><em>starter_objects:</em></h3>
+<p>A dict of objects/<code><a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a></code>s/both to be entrusted to the UndaManager in the pattern:
+<code>{key: object (or UndaClient)}</code></p>
+<h3 id="stack_height"><em>stack_height:</em></h3>
+<p>An integer representing the maximum number of states to store in any stack created by this <code><a title="unda.UndaManager" href="#unda.UndaManager">UndaManager</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UndaManager:
+    &#34;&#34;&#34;
+    `UndaManager` class. Manages undo and redo operations for all objects in its care. Best for managing Undo and Redo
+    functionality for multiple objects and existing UndaClients.
+
+    To use, you can either:
+
+    * pass a dict of `{key: object (or UndaClient)}` pairs as the `starter_objects` parameter,
+
+    * leave the parameters blank and use the `add_client()` or &#34;add_clients()` methods to entrust existing
+      `UndaClient`s,
+
+    * or use the `add_object()` or `add_objects()` methods to add objects directly.
+
+    Please do not attempt to add an object by using `UndaManager.objects[key] = target` unless the &#34;target&#34; is an
+    `UndaClient`. This will not work as intended, because `UndaManager`s deal with `UndaClient`s, and not the objects
+    themselves. Always use the `add_object()` function instead for ordinary objects.
+    
+    ## Parameters
+    ### _starter_objects:_
+    A dict of objects/`UndaClient`s/both to be entrusted to the UndaManager in the pattern: 
+    `{key: object (or UndaClient)}`
+     
+    ### _stack_height:_
+    An integer representing the maximum number of states to store in any stack created by this `UndaManager`. 
+     
+    &#34;&#34;&#34;
+    starter_objects: Optional[Dict] = None
+
+    def __init__(self, starter_objects: Optional[Dict] = None, stack_height: int = STACK_HEIGHT) -&gt; None:
+        self.stack_height: int = stack_height
+        self.starter_objects: Optional[Dict] = starter_objects
+        self.objects: Dict = {}
+        if self.starter_objects is not None:
+            self.objects.update({x: UndaClient(self.starter_objects[x])
+                                 for x in self.starter_objects if not issubclass(x, UndaClient)})
+            self.objects.update({x: self.starter_objects[x]
+                                 for x in self.starter_objects if issubclass(x, UndaClient)})
+
+    def add_object(self, key: str, target: object) -&gt; None:
+        &#34;&#34;&#34;
+        Entrusts an object into the UndaManager&#39;s care.
+        Please do not attempt to add an object by using &#34;UndaManager.objects[key] = target&#34; (direct dictionary edits),
+        as this will not work as intended. Always use this function instead.
+        
+        ## Parameters
+        ### _key:_
+        A key to reference the object. Could be anything, even the class name.
+        
+        ### _target:_
+        The object itself.
+        &#34;&#34;&#34;
+        self.objects[key] = UndaClient(target)
+
+    def add_client(self, key: str, client: UndaClient) -&gt; None:
+        &#34;&#34;&#34;
+        Entrusts an already existing UndaClient object into the UndaManager&#39;s care.
+        Unlike &#34;add_object()&#34;, direct object dictionary edits to add a Client will work normally. It&#39;s ill-advised
+        though; it&#39;s best to use this function.
+        
+        ## Parameters
+        ### _key:_
+        A key to reference the object. Could be anything, even the class name.
+        
+        ### _client:_
+        The UndaClient object to entrust.
+        &#34;&#34;&#34;
+        client.entrust(key, self)
+
+    def update_all(self) -&gt; None:
+        &#34;&#34;&#34;
+        Same as &#34;update&#34;, but applies it to all keys.
+        &#34;&#34;&#34;
+        for key in self.objects.keys():
+            self.objects[key].update()
+
+    def clear_all_stacks(self) -&gt; None:
+        &#34;&#34;&#34;
+        Calls the &#34;clear_stacks&#34; function for all objects.
+        &#34;&#34;&#34;
+        for key in self.objects.keys():
+            self.objects[key].clear_stacks()
+
+    def clear_undo_stacks(self) -&gt; None:
+        &#34;&#34;&#34;
+        Calls the &#34;clear_undo_stack&#34; function for all objects.
+        &#34;&#34;&#34;
+        for key in self.objects.keys():
+            self.objects[key].clear_undo_stack()
+
+    def clear_redo_stacks(self) -&gt; None:
+        &#34;&#34;&#34;
+        Calls the &#34;clear_redo_stack&#34; function for all objects.
+        &#34;&#34;&#34;
+        for key in self.objects.keys():
+            self.objects[key].clear_redo_stack()
+
+    def undo(self, key, depth: int = 0, quiet: bool = False, inplace: bool = False):
+        &#34;&#34;&#34;
+        Calls the `undo()` function of the UndaClient referenced by the specified key.
+
+        ## Parameters
+
+        ### _key_:
+        The string used to reference a specific `UndaClient`.
+
+        All other parameters are the same as `UndaClient.undo()` where they apply.
+        &#34;&#34;&#34;
+        self.objects[key].undo(depth, quiet, inplace)
+
+    def undo_all(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Dict:
+        &#34;&#34;&#34;
+        Same as undo, but applies to all objects in the UndaManager&#39;s care, and returns a dict in the format:
+        {key: result}
+
+        ## Parameters
+        Same as `UndaClient.undo()`
+        &#34;&#34;&#34;
+        return {key: self.objects[key].undo(depth, quiet, inplace) for key in self.objects.keys()}
+    
+    def redo(self, key, depth: int = 0, quiet: bool = False, inplace: bool = False):
+        &#34;&#34;&#34;
+        Calls the `redo()` function of the UndaClient referenced by the specified key.
+
+        ## Parameters
+
+        ### _key_:
+        The string used to reference a specific `UndaClient`.
+
+        All other parameters are the same as `UndaClient.redo()` where they apply.
+        &#34;&#34;&#34;
+        self.objects[key].redo(depth, quiet, inplace)
+
+    def redo_all(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Dict:
+        &#34;&#34;&#34;
+        Same as redo, but applies to all objects in the UndaManager&#39;s care, and returns a dict in the format:
+        {key: result}
+
+        ## Parameters
+        Same as `UndaClient.redo()`
+        &#34;&#34;&#34;
+        return {key: self.objects[key].redo(depth, quiet, inplace) for key in self.objects.keys()}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="unda.UndaManager.starter_objects"><code class="name">var <span class="ident">starter_objects</span> : Optional[Dict[~KT, ~VT]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="unda.UndaManager.add_client"><code class="name flex">
+<span>def <span class="ident">add_client</span></span>(<span>self, key: str, client: <a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a>) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Entrusts an already existing UndaClient object into the UndaManager's care.
+Unlike "add_object()", direct object dictionary edits to add a Client will work normally. It's ill-advised
+though; it's best to use this function.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="key"><em>key:</em></h3>
+<p>A key to reference the object. Could be anything, even the class name.</p>
+<h3 id="client"><em>client:</em></h3>
+<p>The UndaClient object to entrust.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_client(self, key: str, client: UndaClient) -&gt; None:
+    &#34;&#34;&#34;
+    Entrusts an already existing UndaClient object into the UndaManager&#39;s care.
+    Unlike &#34;add_object()&#34;, direct object dictionary edits to add a Client will work normally. It&#39;s ill-advised
+    though; it&#39;s best to use this function.
+    
+    ## Parameters
+    ### _key:_
+    A key to reference the object. Could be anything, even the class name.
+    
+    ### _client:_
+    The UndaClient object to entrust.
+    &#34;&#34;&#34;
+    client.entrust(key, self)</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaManager.add_object"><code class="name flex">
+<span>def <span class="ident">add_object</span></span>(<span>self, key: str, target: object) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Entrusts an object into the UndaManager's care.
+Please do not attempt to add an object by using "UndaManager.objects[key] = target" (direct dictionary edits),
+as this will not work as intended. Always use this function instead.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="key"><em>key:</em></h3>
+<p>A key to reference the object. Could be anything, even the class name.</p>
+<h3 id="target"><em>target:</em></h3>
+<p>The object itself.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_object(self, key: str, target: object) -&gt; None:
+    &#34;&#34;&#34;
+    Entrusts an object into the UndaManager&#39;s care.
+    Please do not attempt to add an object by using &#34;UndaManager.objects[key] = target&#34; (direct dictionary edits),
+    as this will not work as intended. Always use this function instead.
+    
+    ## Parameters
+    ### _key:_
+    A key to reference the object. Could be anything, even the class name.
+    
+    ### _target:_
+    The object itself.
+    &#34;&#34;&#34;
+    self.objects[key] = UndaClient(target)</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaManager.clear_all_stacks"><code class="name flex">
+<span>def <span class="ident">clear_all_stacks</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calls the "clear_stacks" function for all objects.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clear_all_stacks(self) -&gt; None:
+    &#34;&#34;&#34;
+    Calls the &#34;clear_stacks&#34; function for all objects.
+    &#34;&#34;&#34;
+    for key in self.objects.keys():
+        self.objects[key].clear_stacks()</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaManager.clear_redo_stacks"><code class="name flex">
+<span>def <span class="ident">clear_redo_stacks</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calls the "clear_redo_stack" function for all objects.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clear_redo_stacks(self) -&gt; None:
+    &#34;&#34;&#34;
+    Calls the &#34;clear_redo_stack&#34; function for all objects.
+    &#34;&#34;&#34;
+    for key in self.objects.keys():
+        self.objects[key].clear_redo_stack()</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaManager.clear_undo_stacks"><code class="name flex">
+<span>def <span class="ident">clear_undo_stacks</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calls the "clear_undo_stack" function for all objects.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clear_undo_stacks(self) -&gt; None:
+    &#34;&#34;&#34;
+    Calls the &#34;clear_undo_stack&#34; function for all objects.
+    &#34;&#34;&#34;
+    for key in self.objects.keys():
+        self.objects[key].clear_undo_stack()</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaManager.redo"><code class="name flex">
+<span>def <span class="ident">redo</span></span>(<span>self, key, depth: int = 0, quiet: bool = False, inplace: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calls the <code>redo()</code> function of the UndaClient referenced by the specified key.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="key"><em>key</em>:</h3>
+<p>The string used to reference a specific <code><a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a></code>.</p>
+<p>All other parameters are the same as <code><a title="unda.UndaClient.redo" href="#unda.UndaClient.redo">UndaClient.redo()</a></code> where they apply.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def redo(self, key, depth: int = 0, quiet: bool = False, inplace: bool = False):
+    &#34;&#34;&#34;
+    Calls the `redo()` function of the UndaClient referenced by the specified key.
+
+    ## Parameters
+
+    ### _key_:
+    The string used to reference a specific `UndaClient`.
+
+    All other parameters are the same as `UndaClient.redo()` where they apply.
+    &#34;&#34;&#34;
+    self.objects[key].redo(depth, quiet, inplace)</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaManager.redo_all"><code class="name flex">
+<span>def <span class="ident">redo_all</span></span>(<span>self, depth: int = 0, quiet: bool = False, inplace: bool = False) ‑> Dict[~KT, ~VT]</span>
+</code></dt>
+<dd>
+<div class="desc"><p key: result>Same as redo, but applies to all objects in the UndaManager's care, and returns a dict in the format:</p>
+<h2 id="parameters">Parameters</h2>
+<p>Same as <code><a title="unda.UndaClient.redo" href="#unda.UndaClient.redo">UndaClient.redo()</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def redo_all(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Dict:
+    &#34;&#34;&#34;
+    Same as redo, but applies to all objects in the UndaManager&#39;s care, and returns a dict in the format:
+    {key: result}
+
+    ## Parameters
+    Same as `UndaClient.redo()`
+    &#34;&#34;&#34;
+    return {key: self.objects[key].redo(depth, quiet, inplace) for key in self.objects.keys()}</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaManager.undo"><code class="name flex">
+<span>def <span class="ident">undo</span></span>(<span>self, key, depth: int = 0, quiet: bool = False, inplace: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calls the <code>undo()</code> function of the UndaClient referenced by the specified key.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="key"><em>key</em>:</h3>
+<p>The string used to reference a specific <code><a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a></code>.</p>
+<p>All other parameters are the same as <code><a title="unda.UndaClient.undo" href="#unda.UndaClient.undo">UndaClient.undo()</a></code> where they apply.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def undo(self, key, depth: int = 0, quiet: bool = False, inplace: bool = False):
+    &#34;&#34;&#34;
+    Calls the `undo()` function of the UndaClient referenced by the specified key.
+
+    ## Parameters
+
+    ### _key_:
+    The string used to reference a specific `UndaClient`.
+
+    All other parameters are the same as `UndaClient.undo()` where they apply.
+    &#34;&#34;&#34;
+    self.objects[key].undo(depth, quiet, inplace)</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaManager.undo_all"><code class="name flex">
+<span>def <span class="ident">undo_all</span></span>(<span>self, depth: int = 0, quiet: bool = False, inplace: bool = False) ‑> Dict[~KT, ~VT]</span>
+</code></dt>
+<dd>
+<div class="desc"><p key: result>Same as undo, but applies to all objects in the UndaManager's care, and returns a dict in the format:</p>
+<h2 id="parameters">Parameters</h2>
+<p>Same as <code><a title="unda.UndaClient.undo" href="#unda.UndaClient.undo">UndaClient.undo()</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def undo_all(self, depth: int = 0, quiet: bool = False, inplace: bool = False) -&gt; Dict:
+    &#34;&#34;&#34;
+    Same as undo, but applies to all objects in the UndaManager&#39;s care, and returns a dict in the format:
+    {key: result}
+
+    ## Parameters
+    Same as `UndaClient.undo()`
+    &#34;&#34;&#34;
+    return {key: self.objects[key].undo(depth, quiet, inplace) for key in self.objects.keys()}</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaManager.update_all"><code class="name flex">
+<span>def <span class="ident">update_all</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Same as "update", but applies it to all keys.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_all(self) -&gt; None:
+    &#34;&#34;&#34;
+    Same as &#34;update&#34;, but applies it to all keys.
+    &#34;&#34;&#34;
+    for key in self.objects.keys():
+        self.objects[key].update()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="unda.UndaObject"><code class="flex name class">
+<span>class <span class="ident">UndaObject</span></span>
+<span>(</span><span>style: Optional[str] = None, stack_height: Optional[int] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A custom class which gives update, undo and redo abilities to any class that inherits from it by adding an
+UndaClient object to its attributes.</p>
+<p>The easiest way to use Unda in my opinion.</p>
+<p>To use,</p>
+<ol>
+<li>
+<p>Inherit from this class when creating your desired class, (e.g. MyObject(UndaObject))</p>
+</li>
+<li>
+<p>At the END of the <code>__init()__</code> function (if it exists), call <code>self.init_fondue()</code>,</p>
+</li>
+<li>
+<p>At the BEGINNING of any method which may alter the attributes of the objects, call <code>self.update()</code>.</p>
+</li>
+</ol>
+<p>That's it. Any method which step 3 affected can be undone by calling "self.undo()". Do note that if your custom
+class has no <code>__init__()</code>, there's no need to bother with step 1.</p>
+<h2 id="parameters">Parameters</h2>
+<p>Same as <code><a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a></code> where they apply.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UndaObject:
+    &#34;&#34;&#34;
+    A custom class which gives update, undo and redo abilities to any class that inherits from it by adding an
+    UndaClient object to its attributes.
+
+    The easiest way to use Unda in my opinion.
+
+    To use,
+
+    1. Inherit from this class when creating your desired class, (e.g. MyObject(UndaObject))
+
+    2. At the END of the `__init()__` function (if it exists), call `self.init_fondue()`,
+
+    3. At the BEGINNING of any method which may alter the attributes of the objects, call `self.update()`.
+
+    That&#39;s it. Any method which step 3 affected can be undone by calling &#34;self.undo()&#34;. Do note that if your custom
+    class has no `__init__()`, there&#39;s no need to bother with step 1.
+
+    ## Parameters
+    Same as `UndaClient()` where they apply.
+    &#34;&#34;&#34;
+
+    def __init__(self, style: Optional[str] = None, stack_height: Optional[int] = None):
+        self.client = UndaClient(self, style=style, stack_height=stack_height)
+
+    def init_fondue(self, style: Optional[str] = None, stack_height: Optional[int] = None):
+        &#34;&#34;&#34;
+        Custom Initialization function. Comes in especially handy if your custom object already overrides
+        `__init__()`.
+
+        ## Parameters
+        Same as `UndaClient()` where they apply.
+        &#34;&#34;&#34;
+        self.client = UndaClient(self, style=style, stack_height=stack_height)
+
+    def update(self):
+        &#34;&#34;&#34;
+        Same as `UndaClient.update()`.
+        &#34;&#34;&#34;
+        self.client.update()
+
+    def undo(self, depth: int = 0, quiet: bool = False, inplace: bool = True):
+        &#34;&#34;&#34;
+        Same as `UndaClient.undo()`.
+        &#34;&#34;&#34;
+        return self.client.undo(depth, quiet, inplace)
+
+    def redo(self, depth: int = 0, quiet: bool = False, inplace: bool = True):
+        &#34;&#34;&#34;
+        Same as `UndaClient.redo()`.
+        &#34;&#34;&#34;
+        return self.client.redo(depth, quiet, inplace)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="unda.UndaObject.init_fondue"><code class="name flex">
+<span>def <span class="ident">init_fondue</span></span>(<span>self, style: Optional[str] = None, stack_height: Optional[int] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Custom Initialization function. Comes in especially handy if your custom object already overrides
+<code>__init__()</code>.</p>
+<h2 id="parameters">Parameters</h2>
+<p>Same as <code><a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a></code> where they apply.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_fondue(self, style: Optional[str] = None, stack_height: Optional[int] = None):
+    &#34;&#34;&#34;
+    Custom Initialization function. Comes in especially handy if your custom object already overrides
+    `__init__()`.
+
+    ## Parameters
+    Same as `UndaClient()` where they apply.
+    &#34;&#34;&#34;
+    self.client = UndaClient(self, style=style, stack_height=stack_height)</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaObject.redo"><code class="name flex">
+<span>def <span class="ident">redo</span></span>(<span>self, depth: int = 0, quiet: bool = False, inplace: bool = True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Same as <code><a title="unda.UndaClient.redo" href="#unda.UndaClient.redo">UndaClient.redo()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def redo(self, depth: int = 0, quiet: bool = False, inplace: bool = True):
+    &#34;&#34;&#34;
+    Same as `UndaClient.redo()`.
+    &#34;&#34;&#34;
+    return self.client.redo(depth, quiet, inplace)</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaObject.undo"><code class="name flex">
+<span>def <span class="ident">undo</span></span>(<span>self, depth: int = 0, quiet: bool = False, inplace: bool = True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Same as <code><a title="unda.UndaClient.undo" href="#unda.UndaClient.undo">UndaClient.undo()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def undo(self, depth: int = 0, quiet: bool = False, inplace: bool = True):
+    &#34;&#34;&#34;
+    Same as `UndaClient.undo()`.
+    &#34;&#34;&#34;
+    return self.client.undo(depth, quiet, inplace)</code></pre>
+</details>
+</dd>
+<dt id="unda.UndaObject.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Same as <code><a title="unda.UndaClient.update" href="#unda.UndaClient.update">UndaClient.update()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self):
+    &#34;&#34;&#34;
+    Same as `UndaClient.update()`.
+    &#34;&#34;&#34;
+    self.client.update()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="unda.extract_changes" href="#unda.extract_changes">extract_changes</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="unda.UndaClient" href="#unda.UndaClient">UndaClient</a></code></h4>
+<ul class="two-column">
+<li><code><a title="unda.UndaClient.clear_redo_stack" href="#unda.UndaClient.clear_redo_stack">clear_redo_stack</a></code></li>
+<li><code><a title="unda.UndaClient.clear_stacks" href="#unda.UndaClient.clear_stacks">clear_stacks</a></code></li>
+<li><code><a title="unda.UndaClient.clear_undo_stack" href="#unda.UndaClient.clear_undo_stack">clear_undo_stack</a></code></li>
+<li><code><a title="unda.UndaClient.compile_stack" href="#unda.UndaClient.compile_stack">compile_stack</a></code></li>
+<li><code><a title="unda.UndaClient.entrust" href="#unda.UndaClient.entrust">entrust</a></code></li>
+<li><code><a title="unda.UndaClient.init_unda" href="#unda.UndaClient.init_unda">init_unda</a></code></li>
+<li><code><a title="unda.UndaClient.redo" href="#unda.UndaClient.redo">redo</a></code></li>
+<li><code><a title="unda.UndaClient.undo" href="#unda.UndaClient.undo">undo</a></code></li>
+<li><code><a title="unda.UndaClient.update" href="#unda.UndaClient.update">update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="unda.UndaManager" href="#unda.UndaManager">UndaManager</a></code></h4>
+<ul class="two-column">
+<li><code><a title="unda.UndaManager.add_client" href="#unda.UndaManager.add_client">add_client</a></code></li>
+<li><code><a title="unda.UndaManager.add_object" href="#unda.UndaManager.add_object">add_object</a></code></li>
+<li><code><a title="unda.UndaManager.clear_all_stacks" href="#unda.UndaManager.clear_all_stacks">clear_all_stacks</a></code></li>
+<li><code><a title="unda.UndaManager.clear_redo_stacks" href="#unda.UndaManager.clear_redo_stacks">clear_redo_stacks</a></code></li>
+<li><code><a title="unda.UndaManager.clear_undo_stacks" href="#unda.UndaManager.clear_undo_stacks">clear_undo_stacks</a></code></li>
+<li><code><a title="unda.UndaManager.redo" href="#unda.UndaManager.redo">redo</a></code></li>
+<li><code><a title="unda.UndaManager.redo_all" href="#unda.UndaManager.redo_all">redo_all</a></code></li>
+<li><code><a title="unda.UndaManager.starter_objects" href="#unda.UndaManager.starter_objects">starter_objects</a></code></li>
+<li><code><a title="unda.UndaManager.undo" href="#unda.UndaManager.undo">undo</a></code></li>
+<li><code><a title="unda.UndaManager.undo_all" href="#unda.UndaManager.undo_all">undo_all</a></code></li>
+<li><code><a title="unda.UndaManager.update_all" href="#unda.UndaManager.update_all">update_all</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="unda.UndaObject" href="#unda.UndaObject">UndaObject</a></code></h4>
+<ul class="">
+<li><code><a title="unda.UndaObject.init_fondue" href="#unda.UndaObject.init_fondue">init_fondue</a></code></li>
+<li><code><a title="unda.UndaObject.redo" href="#unda.UndaObject.redo">redo</a></code></li>
+<li><code><a title="unda.UndaObject.undo" href="#unda.UndaObject.undo">undo</a></code></li>
+<li><code><a title="unda.UndaObject.update" href="#unda.UndaObject.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
