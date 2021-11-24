@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
 <title>Unda Official Documentation</title>
-<meta name="description" content="Documentation for the Unda Undo/Redo Module" />
+<meta name="description" content="Official docs for the Unda Undo/Redo Module" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -19,7 +19,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title"><code>Unda</code></h1>
+<h1 class="title"><code>unda</code></h1>
 </header>
 <section id="section-intro">
 <p><img alt="Downloads" src="https://img.shields.io/pypi/dm/unda.svg?style=flat">
@@ -59,7 +59,7 @@ This documentation is auto-generated from Markdown-syntax docstrings using pdoc3
 the beginning of the module&#39;s source code.
 
 &#34;&#34;&#34;
-__version__ = &#39;1.1.0.2&#39;
+__version__ = &#39;1.1.0.3&#39;
 
 from collections import deque
 from copy import copy, deepcopy
@@ -101,7 +101,7 @@ class UndaClient:
     ## Usage
 
     Create an UndaClient instance and pass your desired target object, e.g:
-    
+
     ```python
     target = MyFantasticObject()
     my_client = UndaClient(target)
@@ -434,7 +434,7 @@ class UndaObject:
 
     1. Inherit from this class when creating your desired class, (e.g. MyObject(UndaObject))
 
-    2. At the END of the `__init()__` function, call `UndaObject.__init__(self)`,
+    2. At the END of the `__init()__` function, call `UndaObject``.__init__(self)`,
 
     3. At the BEGINNING of any method which may alter the attributes of the objects, call `self.update()`.
 
@@ -448,13 +448,12 @@ class UndaObject:
     * it must have an `__init__()` function with all the other parent classes&#39; `__init__()` functions (if
     they have such) being called (e.g. `OtherParent.__init__(self)`), and
 
-    * Step 2 must apply; `UndaObject.__init__(self)` must be the last line of your custom object&#39;s `__init__()`
+    * Step 2 must apply; `UndaObject``.__init__(self)` must be the last line of your custom object&#39;s `__init__()`
     function.
 
     ## Parameters
     Same as `UndaClient()` where they apply.
-    &#34;&#34;&#34;
-
+    &#34;&#34;&#34;    
     def __init__(self, style: Optional[str] = None, stack_height: Optional[int] = None):
         self.client = UndaClient(self, style=style, stack_height=stack_height)
 
@@ -725,7 +724,7 @@ deque will be created for that purpose.</p>
     ## Usage
 
     Create an UndaClient instance and pass your desired target object, e.g:
-    
+
     ```python
     target = MyFantasticObject()
     my_client = UndaClient(target)
@@ -1852,7 +1851,7 @@ UndaClient object to its attributes.</p>
 <p>Inherit from this class when creating your desired class, (e.g. MyObject(UndaObject))</p>
 </li>
 <li>
-<p>At the END of the <code>__init()__</code> function, call <code><a title="unda.UndaObject" href="#unda.UndaObject">UndaObject</a>(self)</code>,</p>
+<p>At the END of the <code>__init()__</code> function, call <code><a title="unda.UndaObject" href="#unda.UndaObject">UndaObject</a>``.__init__(self)</code>,</p>
 </li>
 <li>
 <p>At the BEGINNING of any method which may alter the attributes of the objects, call <code>self.update()</code>.</p>
@@ -1867,7 +1866,7 @@ UndaClient object to its attributes.</p>
 they have such) being called (e.g. <code>OtherParent.__init__(self)</code>), and</p>
 </li>
 <li>
-<p>Step 2 must apply; <code><a title="unda.UndaObject" href="#unda.UndaObject">UndaObject</a>(self)</code> must be the last line of your custom object's <code>__init__()</code>
+<p>Step 2 must apply; <code><a title="unda.UndaObject" href="#unda.UndaObject">UndaObject</a>``.__init__(self)</code> must be the last line of your custom object's <code>__init__()</code>
 function.</p>
 </li>
 </ul>
@@ -1888,7 +1887,7 @@ function.</p>
 
     1. Inherit from this class when creating your desired class, (e.g. MyObject(UndaObject))
 
-    2. At the END of the `__init()__` function, call `UndaObject.__init__(self)`,
+    2. At the END of the `__init()__` function, call `UndaObject``.__init__(self)`,
 
     3. At the BEGINNING of any method which may alter the attributes of the objects, call `self.update()`.
 
@@ -1902,13 +1901,12 @@ function.</p>
     * it must have an `__init__()` function with all the other parent classes&#39; `__init__()` functions (if
     they have such) being called (e.g. `OtherParent.__init__(self)`), and
 
-    * Step 2 must apply; `UndaObject.__init__(self)` must be the last line of your custom object&#39;s `__init__()`
+    * Step 2 must apply; `UndaObject``.__init__(self)` must be the last line of your custom object&#39;s `__init__()`
     function.
 
     ## Parameters
     Same as `UndaClient()` where they apply.
-    &#34;&#34;&#34;
-
+    &#34;&#34;&#34;    
     def __init__(self, style: Optional[str] = None, stack_height: Optional[int] = None):
         self.client = UndaClient(self, style=style, stack_height=stack_height)
 
