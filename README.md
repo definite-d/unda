@@ -1,5 +1,5 @@
 # Unda
-![Downloads](https://img.shields.io/pypi/dm/unda.svg?style=flat)
+[![Downloads](https://static.pepy.tech/badge/unda)](https://pepy.tech/project/unda)
 ![GitHub forks](https://img.shields.io/github/forks/definite-d/unda?logo=github&style=flat)
 ![PyPi Version](https://img.shields.io/pypi/v/unda?style=flat)
 ![Python Versions](https://img.shields.io/pypi/pyversions/unda.svg?style=flat&logo=python])
@@ -60,6 +60,6 @@ Unda is:
 
  * built using Python 3.7 (in PyCharm),
 
- * fully PEP-8 compliant (checked with PyCharm),
+ * fully PEP-8 compliant,
 
  * distributed under the OSI-Approved MIT License.
