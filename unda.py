@@ -30,15 +30,12 @@ RESERVED_NAMES = ['target_dict', 'undo_stack', 'redo_stack', 'stack_height']
 DEEPCOPY = 'DEEPCOPY'
 LOGGER = 'LOGGER'
 
-
 def extract_changes(original, changed) -> Optional[Dict]:
     """
     Obtains and returns a dict of changes by comparing two dicts.
-
     ## Parameters
     ### _original:_
     Dict to compare "changed" against.
-
     ### _changed:_
     Dict to be compared for differences.
     """
@@ -51,36 +48,24 @@ def extract_changes(original, changed) -> Optional[Dict]:
             checklist_anomalies[key_value] = value
     return checklist_anomalies if len(checklist_anomalies) > 0 else None
 
-
 class UndaClient:
     """
     The `UndaClient` class.
-
     Arguably the most powerful part of Unda. Performs the duties of undo and redo on behalf of another object.
-
     ## Usage
-
     Create an UndaClient instance and pass your desired target object, e.g:
-
     ```python
     target = MyFantasticObject()
     my_client = UndaClient(target)
     ```
-
     ## Parameters
-
     ### _target:_
     The object itself.
-
     ### _style:_
     The `style` parameter specifies how this Client handles object state data.
-
     There are two different styles:
-
     * `DEEPCOPY` style: With this style, states are regarded as deepcopies of the target object.
-
     * `LOGGER` style: This style regards states as changes to the `__dict__` attribute of the target object.
-
     If left unspecified, Unda will resort to the best method for the current scenario.
     To specify a desired style and override Unda's judgement (not recommended), import the name of the style you want,
     e.g.:
@@ -88,22 +73,17 @@ class UndaClient:
     from unda import LOGGER
     ```
     and pass it as the value of the `style` parameter.
-
     ### _auto_first_update:_
     If this is set to True, the Client will automatically update the undo dict once it's created, so there would be no
     need to call `update()` after creating the Client.
-
     ### _undo_stack:_
     If any deque is passed, it will be used as the undo stack for the Client. If none is passed (by default), a new
     deque will be created for that purpose.
-
     ### _redo_stack:_
     If any deque is passed, it will be used as the redo stack for the Client. If none is passed (by default), a new
     deque will be created for that purpose.
-
     ### _stack_height:_
     The maximum number of states to store in either stack. Defaults to 20.
-
     """
 
     def __init__(self,
@@ -113,46 +93,60 @@ class UndaClient:
                  undo_stack: Optional[deque] = None,
                  redo_stack: Optional[deque] = None,
                  stack_height: Optional[int] = None):
-        self.target: object = target
-        self.stack_height: Optional[int] = stack_height
-        self.undo_stack: Optional[deque] = undo_stack
-        self.redo_stack: Optional[deque] = redo_stack
+        self.target = target
+        self.style = style
+        self.stack_height = stack_height
+        self.undo_stack = undo_stack
+        self.redo_stack = redo_stack
+
+        self._init_stack_height()
+        self._init_undo_stack()
+        self._init_redo_stack()
+        self._init_style()
+
+        if auto_first_update:
+            self._auto_first_update()
+
+    def _init_stack_height(self):
         if self.stack_height is None:
             self.stack_height = STACK_HEIGHT
+
+    def _init_undo_stack(self):
         if self.undo_stack is None:
             self.undo_stack = deque(maxlen=self.stack_height)
+
+    def _init_redo_stack(self):
         if self.redo_stack is None:
             self.redo_stack = deque(maxlen=self.stack_height)
-        self.style = style
+
+    def _init_style(self):
         if self.style is None:
             if 'dict' in vars(self.target) and self.target.__sizeof__() > self.target.__dict__.__sizeof__():
-                self.target_dict: Dict = self.__dict__.copy()
+                self.target_dict = self.__dict__.copy()
                 self.style = LOGGER
-            if 'dict' not in vars(self.target):
+            elif 'dict' not in vars(self.target):
                 self.style = DEEPCOPY
-        # print(self.style, self.target.__dict__.__sizeof__(), self.target.__sizeof__())
-        if auto_first_update:
-            if self.style == DEEPCOPY:
-                self.undo_stack.append(deepcopy(self.target))
-                self.clear_redo_stack()
-            if self.style == LOGGER:
-                # If the stack is full, make the oldest change permanent in the target_dict.
-                if len(self.undo_stack) == self.undo_stack.maxlen:
-                    change = self.undo_stack.popleft()
-                    self.target_dict.update(change)
-                checklist_anomalies = extract_changes(self.compile_stack(), self.__dict__)
-                self.undo_stack.append(checklist_anomalies)
-                self.clear_redo_stack()
-                del checklist_anomalies
+
+    def _auto_first_update(self):
+        if self.style == DEEPCOPY:
+            self.undo_stack.append(deepcopy(self.target))
+            self.clear_redo_stack()
+        elif self.style == LOGGER:
+            if len(self.undo_stack) == self.undo_stack.maxlen:
+                change = self.undo_stack.popleft()
+                self.target_dict.update(change)
+            checklist_anomalies = extract_changes(
+                self.compile_stack(), self.__dict__)
+            self.undo_stack.append(checklist_anomalies)
+            self.clear_redo_stack()
+            del checklist_anomalies
 
     def entrust(self, key, manager) -> None:
         """
         Adds the client to the care of an `UndoManager` for easier batch use.
-
         ## Parameters
         ### _key:_
         A string used for referencing this Client directly from the `UndaManager`.
-
         ### _manager:_
         The `UndaManager` object to add this Client to.
         """
@@ -168,7 +162,6 @@ class UndaClient:
                   stack_height: Optional[int] = None, ) -> None:
         """
         Custom initialization function.
-
         ## Parameters
         Same as `UndaClient()`.
         """
@@ -199,7 +192,8 @@ class UndaClient:
                 if len(self.undo_stack) == self.undo_stack.maxlen:
                     change = self.undo_stack.popleft()
                     self.target_dict.update(change)
-                checklist_anomalies = extract_changes(self.compile_stack(), self.__dict__)
+                checklist_anomalies = extract_changes(
+                    self.compile_stack(), self.__dict__)
                 self.undo_stack.append(checklist_anomalies)
                 self.clear_redo_stack()
                 del checklist_anomalies
@@ -232,17 +226,13 @@ class UndaClient:
                       stack: Optional[deque] = None) -> Dict:
         """
         Useful only when using `LOGGER` style.
-
         Creates a version of the target dict that has all state changes in the specified stack applied.
         By default, the specified stack is the undo stack.
-
         ## Parameters
         ### _depth:_
         The number of changes to apply. Defaults to the total number of changes in the entire stack.
-
         ### _start_point:_
         The index of the first change to apply. Defaults to 0.
-
         ### _stack:_
         The stack of relevance.
         """
@@ -279,7 +269,8 @@ class UndaClient:
             if len(self.undo_stack) == self.undo_stack.maxlen:
                 change = self.undo_stack.popleft()
                 self.target_dict.update(change)
-            checklist_anomalies = extract_changes(self.compile_stack(), self.__dict__)
+            checklist_anomalies = extract_changes(
+                self.compile_stack(), self.__dict__)
             self.undo_stack.append(checklist_anomalies)
             self.clear_redo_stack()
             del checklist_anomalies
@@ -288,16 +279,12 @@ class UndaClient:
         """
         Saves current state to the redo stack, then returns a version of the target object with the latest state data
         in the undo stack applied.
-
         ## Parameters
-
         ### _depth:_
         The number of states to skip with a single undo call. By default, it's 0, and should work for most uses.
-
         ### _quiet:_
         Specifies if Unda should be quiet if undo is called but there's nothing to revert to. If False, an error will
         be returned if that happens.
-
         ### _inplace:_
         Useful only if the target object has a `__dict__` attribute.
         If set to True, the `__dict__` of the target will be replaced by the `__dict__` value of the result of the undo
@@ -309,7 +296,8 @@ class UndaClient:
 
         if self.style == DEEPCOPY:
             # Clear all states above the required one.
-            self.undo_stack = deque(list(self.undo_stack)[0:len(self.undo_stack) - depth + 1], maxlen=self.stack_height)
+            self.undo_stack = deque(list(self.undo_stack)[0:len(
+                self.undo_stack) - depth + 1], maxlen=self.stack_height)
             # Get the required state
             result = self.undo_stack.pop()
             # Save the state before the undo call to the redo stack.
@@ -320,7 +308,8 @@ class UndaClient:
             return result
 
         if self.style == LOGGER:
-            current_differences = extract_changes(self.compile_stack(), self.__dict__)
+            current_differences = extract_changes(
+                self.compile_stack(), self.__dict__)
             self.redo_stack.append(current_differences)
             result = self.compile_stack()
             self.undo_stack = deque(
@@ -337,16 +326,12 @@ class UndaClient:
         """
         Saves current state to the redo stack, then returns a version of the target object with the latest state data
         in the redo stack applied.
-
         ## Parameters
-
         ### _depth:_
         The number of states to skip with a single redo call. By default, it's 0, and should work for most uses.
-
         ### _quiet:_
         Specifies if Unda should be quiet if redo is called but there's nothing to revert to. If False, an error will
         be returned if that happens.
-
         ### _inplace:_
         Useful only if the target object has a `__dict__` attribute.
         If set to True, the `__dict__` of the target will be replaced by the `__dict__` value of the result of the redo
@@ -358,7 +343,8 @@ class UndaClient:
 
         if self.style == DEEPCOPY:
             # Clear all states above the required one.
-            self.redo_stack = deque(list(self.redo_stack)[0:len(self.redo_stack) - depth + 1], maxlen=self.stack_height)
+            self.redo_stack = deque(list(self.redo_stack)[0:len(
+                self.redo_stack) - depth + 1], maxlen=self.stack_height)
             # Get the required state
             result = self.redo_stack.pop()
             # Save the state before the redo call to the undo stack.
@@ -369,7 +355,8 @@ class UndaClient:
             return result
 
         if self.style == LOGGER:
-            current_differences = extract_changes(self.compile_stack(), self.__dict__)
+            current_differences = extract_changes(
+                self.compile_stack(), self.__dict__)
             self.undo_stack.append(current_differences)
             result = self.compile_stack()
             self.redo_stack = deque(
@@ -381,8 +368,6 @@ class UndaClient:
             result = copy(self.target)
             result.__dict__.update(result)
             return result
-
-
 class UndaObject:
     """
     A custom class which gives update, undo and redo abilities to any class that inherits from it by adding an
@@ -436,6 +421,7 @@ class UndaObject:
         """
         return self.client.redo(depth, quiet, inplace)
 
+
 class UndaManager:
     """
     `UndaManager` class. Manages undo and redo operations for all objects in its care. Best for managing Undo and Redo
@@ -455,15 +441,15 @@ class UndaManager:
     Please do not attempt to add an object by using `UndaManager.objects[key] = target` unless the "target" is an
     `UndaClient`. This will not work as intended, because `UndaManager`s deal with `UndaClient`s, and not the objects
     themselves. Always use the `add_object()` function instead for ordinary objects.
-    
+
     ## Parameters
     ### _starter_objects:_
     A dict of objects/`UndaClient`s/both to be entrusted to the UndaManager in the pattern: 
     `{key: object (or UndaClient)}`
-     
+
     ### _stack_height:_
     An integer representing the maximum number of states to store in any stack created by this `UndaManager`. 
-     
+
     """
     starter_objects: Optional[Dict] = None
 
@@ -482,11 +468,11 @@ class UndaManager:
         Entrusts an object into the UndaManager's care.
         Please do not attempt to add an object by using "UndaManager.objects[key] = target" (direct dictionary edits),
         as this will not work as intended. Always use this function instead.
-        
+
         ## Parameters
         ### _key:_
         A key to reference the object. Could be anything, even the class name.
-        
+
         ### _target:_
         The object itself.
         """
@@ -497,11 +483,11 @@ class UndaManager:
         Entrusts an already existing UndaClient object into the UndaManager's care.
         Unlike "add_object()", direct object dictionary edits to add a Client will work normally. It's ill-advised
         though; it's best to use this function.
-        
+
         ## Parameters
         ### _key:_
         A key to reference the object. Could be anything, even the class name.
-        
+
         ### _client:_
         The UndaClient object to entrust.
         """
@@ -557,7 +543,7 @@ class UndaManager:
         Same as `UndaClient.undo()`
         """
         return {key: self.objects[key].undo(depth, quiet, inplace) for key in self.objects.keys()}
-    
+
     def redo(self, key, depth: int = 0, quiet: bool = False, inplace: bool = False):
         """
         Calls the `redo()` function of the UndaClient referenced by the specified key.
