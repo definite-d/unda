@@ -5,7 +5,7 @@
 ![Python Versions](https://img.shields.io/pypi/pyversions/unda.svg?style=flat&logo=python])
 ![License](https://img.shields.io/pypi/l/unda.svg?style=flat&version=latest)
 
-![Project Download Metrics](https://pepy.tech/project/Unda)
+[Project Download Metrics](https://pepy.tech/project/Unda)
 
 ````text
 pip install unda
