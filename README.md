@@ -1,5 +1,6 @@
 # Unda
 [![Downloads](https://static.pepy.tech/badge/unda)](https://pepy.tech/project/unda)
+![Monthly Downloads](https://img.shields.io/pypi/dm/unda.svg?style=flat)
 ![GitHub forks](https://img.shields.io/github/forks/definite-d/unda?logo=github&style=flat)
 ![PyPi Version](https://img.shields.io/pypi/v/unda?style=flat)
 ![Python Versions](https://img.shields.io/pypi/pyversions/unda.svg?style=flat&logo=python])
