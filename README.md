@@ -6,11 +6,11 @@
 ![Python Versions](https://img.shields.io/pypi/pyversions/unda.svg?style=flat&logo=python])
 ![License](https://img.shields.io/pypi/l/unda.svg?style=flat&version=latest)
 
-[Project Download Metrics](https://pepy.tech/project/Unda)
-
 ````text
 pip install unda
 ````
+
+[Project Download Metrics](https://pepy.tech/project/Unda)
 
 [Official Documentation](https://definite-d.github.io/unda/)
 
