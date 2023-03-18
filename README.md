@@ -37,7 +37,7 @@ them using [pdoc](https://github.com/pdoc3/pdoc).
 * Within a terminal with the project folder set as the working directory, run `python -m publish.py build` to build the project.
 
 ### Publishing to PyPi
-* This part requires a PyPi token. Should the need arise, I will personally administer upload tokens for the legacy (.
+* This part requires a PyPi token. Should the need arise, I will personally administer upload tokens for legacy (main) uploads.
 * Put the token (as a string) as the value of the `TOKEN` variable in the `publish.py` file and save.
 * Run `python -m publish.py upload` from a command line to upload the built project, or run `python -m publish.py complete`
 to build and upload automatically. Make sure you have an internet connection, otherwise the upload will not work.
