@@ -1,21 +1,23 @@
-# Using Unda
+# Using unda
 ## Installation
-First, install Unda by the pip command (if you haven't already):
+First, install unda by the pip command (if you haven't already):
 ````
-pip install unda
+pip install --upgrade unda
 ````
 
 ## Basic Usage
-Unda currently provides three ways of handling undo/redo for your objects:
-* Use an `UndoClient` object pointing to your custom object.
+unda currently provides three ways of handling undo/redo for your objects:
+
+* Use an `UndaClient` object pointing to your custom object.
 * Code your object to inherit from the `UndoObject` class.
-* Use an `UndoManager` object.
+* Use an `UndaManager` object and add your object to it.
 
 The usage guides for each method below are very basic and aimed at beginners to Python, thus I recommend you always 
-check the docstrings of each method and class to understand the full capabilities of Unda. 
+check the docstrings and [docs](https://definite-d.github.io/unda) of each method and class to understand the 
+full capabilities of unda. 
 
-### Using UndoClient
-The UndoClient manages the undo/redo functionality on behalf of your object. 
+### Using undaClient
+The UndaClient manages the undo/redo functionality on behalf of your object. 
 
 - Let's assume this is your custom class...:
 ````python
@@ -36,12 +38,12 @@ class Skateboard:
 ````python
 board = Skateboard('Varial')  # Just a skateboard named Varial.
 ````
-- Import the UndaClient object and create an instance for our board/object:
+- Import the undaClient object and create an instance for our board/object:
 ```python
-from unda import UndaClient
-client = UndaClient(board)
+from unda import undaClient
+client = undaClient(board)
 ```
-- Next, we **update** the Client. When using Unda in general, "updating" simply 
+- Next, we **update** the Client. When using unda in general, "updating" simply 
 means saving a state to the undo stack which we can go back to when we call undo().
 So remember, always call `update()` when you need to be able to undo whatever happens next.
 ```python
@@ -72,4 +74,5 @@ print(board.flipped)  # This will print False
 ``` 
 
 
-That's basically all you need to know to use Unda.
+That's basically all you need to know to start using unda, but that is _far_ from all that it offers. 
+Feel free to go through the [docs](https://definite-d.github.io/unda) to see more of what it's capable of.
