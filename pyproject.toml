@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unda"
+dynamic = ["version"]
+description = "A state-based undo and redo functionality module for Python objects."
+readme = "DESCRIPTION.md"
+authors = [{ name = "Divine U. Afam-Ifediogor", email = "divineafam@gmail.com" }]
+license = { file = "LICENSE" }
+classifiers=[
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+]
+keywords = ["state", "undo", "redo"]
+requires-python = ">=3.6"
+
+[project.urls]
+"Homepage" = "https://github.com/definite-d/unda/"
+"Bug Tracker" = "https://github.com/definite-d/unda/issues/"
+
+[tool.setuptools.dynamic]
+version = {attr = "unda.__version__"}
+
+[tool.setuptools]
+packages = ["unda"]
+
